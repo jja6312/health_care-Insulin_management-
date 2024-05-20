@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+  # Spring Boot 빌드 아티팩트를 EC2 인스턴스로 복사
+  - source: /
+    destination: /opt/nonghyuphealthcare/springboot
+    overwrite: yes
+
+permissions:
+  # Spring Boot 애플리케이션 디렉토리 권한 설정
+  - object: /opt/nonghyuphealthcare/springboot/
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+    type:
+      - file
+
+hooks:
+  AfterInstall:
+    # 배포 후 실행할 스크립트 위치. EC2에서 Spring Boot 애플리케이션을 구동
+    - location: deploy.sh
+      timeout: 300
+      runas: root

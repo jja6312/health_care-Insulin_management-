@@ -1,0 +1,66 @@
+name: CI/CD Workflow for Spring Boot and React
+on:
+  push:
+    branches:
+      - dev
+
+env:
+  AWS_REGION: ap-northeast-2
+  REACT_AWS_S3_BUCKET: nonghyuphealthcare-react
+  SPRINGBOOT_AWS_S3_BUCKET: nonghyuphealthcare-springboot
+  AWS_CODE_DEPLOY_APPLICATION: nonghyuphealthcareCodeDeploy
+  AWS_CODE_DEPLOY_GROUP: nonghyuphealthcareCodeDeploy
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Grant execute permission for Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Set up JDK 17 for Spring Boot
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "corretto"
+
+      - name: Build Spring Boot project with Gradle
+        run: ./gradlew clean build -x test
+
+      - name: Set up Node.js for React
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.18.2"
+
+      - name: Build React project
+        run: |
+          cd src/main/webapp
+          npm install --legacy-peer-deps # npm 호환문제로 인해 legacy코드 추가됨.
+          npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.CICD_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CICD_SECRET_KEY }}
+
+      - name: Upload React build to S3
+        run: aws s3 sync src/main/webapp/build/ s3://${{ env.REACT_AWS_S3_BUCKET }}/
+
+      - name: Package Spring Boot build into a zip
+        run: |
+          cp appspec.yml build/libs/
+          cp deploy.sh build/libs/
+          cd build/libs/
+          zip -r springboot-build-$GITHUB_SHA.zip nonghyuphealthcare-0.0.1-SNAPSHOT.jar appspec.yml deploy.sh
+
+      - name: Upload Spring Boot build zip to S3
+        run: |
+          aws s3 cp ${GITHUB_WORKSPACE}/build/libs/springboot-build-$GITHUB_SHA.zip s3://${{ env.SPRINGBOOT_AWS_S3_BUCKET }}/springboot-build/$GITHUB_SHA.zip
+
+      - name: Deploy to EC2 via CodeDeploy
+        run: aws deploy create-deployment --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION }} --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name ${{ env.AWS_CODE_DEPLOY_GROUP }} --s3-location bucket=${{ env.SPRINGBOOT_AWS_S3_BUCKET }},key=springboot-build/$GITHUB_SHA.zip,bundleType=zip
