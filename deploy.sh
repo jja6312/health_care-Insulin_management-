@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # AWS Secrets Manager에서 환경 변수 조회
 SECRET_NAME="aws/secretsmanager/nonghyuphealthcare"
 REGION="ap-northeast-2"
@@ -25,8 +23,11 @@ fi
 # 잠시 대기
 sleep 5
 
+# 로그 디렉토리 생성
+mkdir -p $SPRINGBOOT_DIR/logs
+
 # 새 Spring Boot 애플리케이션 배포
 JAR_NAME=$(ls $SPRINGBOOT_DIR | grep '.jar' | tail -n 1)
 echo "Deploying $JAR_NAME"
-# nohup으로 애플리케이션 실행 시 프로파일 지정
-nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME --spring.profiles.active=prod > /dev/null 2>&1 &
+# nohup으로 애플리케이션 실행 시 로그 파일 생성
+nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME --spring.profiles.active=prod > $SPRINGBOOT_DIR/logs/myBlogLog.log 2>&1 &

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL =
   process.env.NODE_ENV === "production"
-    ? "http://13.209.32.56/api"
+    ? "http://13.209.32.56:8080/api"
     : "http://localhost:8080/api";
 
 const axiosInstance = axios.create({
