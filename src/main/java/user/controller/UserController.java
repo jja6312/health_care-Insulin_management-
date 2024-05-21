@@ -27,7 +27,7 @@ public class UserController {
             if (user.getPassword().equals(loginDTO.getPassword())) {  // 비밀번호 검증
                 String accessToken = jwtUtil.generateAccessToken(user);
                 String refreshToken = jwtUtil.generateRefreshToken(user);
-                return ResponseEntity.ok(new TokenDTO(accessToken, refreshToken));
+                return ResponseEntity.ok(new TokenDTO(accessToken, refreshToken)); //검증에 성공하면 accessToken과 refreshToken 발급
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenDTO("비밀번호가 유효하지 않습니다."));
             }
