@@ -28,7 +28,5 @@ sleep 5
 # 새 Spring Boot 애플리케이션 배포
 JAR_NAME=$(ls $SPRINGBOOT_DIR | grep '.jar' | tail -n 1)
 echo "Deploying $JAR_NAME"
-#nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > $SPRINGBOOT_DIR/$(date +%F_%T)-nohup.out 2>&1 &
-#ec2 상태검사 1/2로 변하는 에러를 /dev/null로 리다이렉션해서 해결해보자.(로그 기록 x)
-nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > /dev/null 2>&1 &
-
+# nohup으로 애플리케이션 실행 시 프로파일 지정
+nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME --spring.profiles.active=prod > /dev/null 2>&1 &

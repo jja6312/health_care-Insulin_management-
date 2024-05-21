@@ -26,7 +26,7 @@ const Login = () => {
         localStorage.setItem("refreshToken", refreshToken);
         console.log("로그인 성공");
         setLoading(false);
-        navigate("/"); // 성공 시 원하는 페이지로 이동
+        navigate("/");
       } else {
         setError(message);
         setLoading(false);
@@ -36,8 +36,10 @@ const Login = () => {
       console.error("로그인 에러", e);
       setError(
         e.response?.data?.message ||
-          "로그인에 실패했습니다. 다시 시도해 주세요."
+          "로그인에 실패했습니다. 미래전략 박수빈 계장님께 문의해주세요."
       );
+      console.log("로그인 실패");
+      console.log("로그인 에러 응답 데이터:", e.response?.data);
       setLoading(false);
     }
   };
