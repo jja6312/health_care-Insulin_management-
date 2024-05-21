@@ -1,7 +1,13 @@
 # AWS Secrets Manager에서 환경 변수 조회
 SECRET_NAME="aws/secretsmanager/nonghyuphealthcare"
 REGION="ap-northeast-2"
-
+# jq가 설치되어 있는지 확인 (설치되지 않은 경우 설치)
+if ! command -v jq &> /dev/null
+then
+    echo "jq could not be found, installing..."
+    sudo apt-get update
+    sudo apt-get install -y jq
+fi
 # AWS CLI를 사용하여 비밀 값을 조회
 SECRET=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
 
