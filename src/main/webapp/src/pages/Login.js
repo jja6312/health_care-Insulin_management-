@@ -1,53 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../assets/logo.svg";
 import DarkModeBtnCircle from "../components/darkMode/DarkModeBtnCircle";
 import { useLoginStore } from "../store/useLoginStore";
 import { useNavigate } from "react-router-dom";
-import { loginApi } from "../api/authApi";
+import handleSubmit from "../components/login/handleSubmit";
+import checkSession from "../api/checkSession";
 
 const Login = () => {
-  const { loginDTO, setLoginDTO, setLoading, setError, loading, error } =
+  const { loginDTO, setLoginDTO, loading, error, setLoading, setError } =
     useLoginStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const validateSession = async () => {
+      const isValid = await checkSession();
+      if (isValid) {
+        navigate("/");
+      }
+    };
+
+    validateSession();
+  }, [navigate]);
 
   const handleLoginDTO = (e) => {
     setLoginDTO(e.target.id, e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    try {
-      const { accessToken, refreshToken, message } = await loginApi(loginDTO);
-
-      if (accessToken && refreshToken) {
-        sessionStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        console.log("로그인 성공");
-        setLoading(false);
-        navigate("/");
-      } else {
-        setError(message);
-        setLoading(false);
-      }
-    } catch (e) {
-      console.error("로그인 에러 응답 데이터:", e.response?.data);
-      console.error("로그인 에러", e);
-      setError(
-        e.response?.data?.message ||
-          "로그인에 실패했습니다. 미래전략 박수빈 계장님께 문의해주세요."
-      );
-      console.log("로그인 실패");
-      console.log("로그인 에러 응답 데이터:", e.response?.data);
-      setLoading(false);
-    }
+  const handleFormSubmit = (e) => {
+    handleSubmit(e, navigate, setLoading, setError, loginDTO);
   };
 
   return (
     <div className="relative flex flex-col justify-center items-center w-screen h-screen gap-7 bg-white dark:bg-dark md:gap-10">
       <img className="w-1/2 md:w-1/3" src={Logo} alt="logo" />
-      <form className="w-2/3 md:w-1/2" onSubmit={handleSubmit}>
+      <form className="w-2/3 md:w-1/2" onSubmit={handleFormSubmit}>
         {/* 사번 */}
         <div className="flex flex-col justify-between items-start">
           <label

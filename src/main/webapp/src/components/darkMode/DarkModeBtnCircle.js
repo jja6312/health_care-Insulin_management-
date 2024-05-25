@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useDarkModeStore } from "../../store/useDarkModeStore";
 
 const DarkModeBtnCircle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode]);
+  const { isDarkMode, setIsDarkMode } = useDarkModeStore();
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);

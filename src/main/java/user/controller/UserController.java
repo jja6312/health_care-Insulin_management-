@@ -1,11 +1,16 @@
 package user.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import user.dto.LoginDTO;
 import user.dto.TokenDTO;
+import user.dto.UserInfoDTO;
 import user.entity.User;
 import user.service.UserService;
 import security.JwtUtil;
@@ -15,6 +20,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
@@ -52,4 +58,29 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenDTO("리프레시 토큰이 유효하지 않습니다."));
         }
     }
+
+
+    @GetMapping("/check-session")
+    public ResponseEntity<?> checkSession(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            if (jwtUtil.validateToken(token)) {
+                return ResponseEntity.ok().build();
+            }
+        }
+        return ResponseEntity.status(401).build();
+    }
+
+    //로그인 user 정보 조회
+
+    @GetMapping("/users/me")
+    public UserInfoDTO getUserInfo(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String empId = authentication.getName();
+        return userService.getUserInfo(empId);
+    }
+
+
 }
