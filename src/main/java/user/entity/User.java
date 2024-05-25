@@ -27,6 +27,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Point> points; //포인트목록
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BloodSugars> bloodSugars; //걸음수 목록
+
     @Builder
     public User(String empId, String password) {
         this.empId = empId;

@@ -18,6 +18,7 @@ public class UserInfoDTO {
     private String empId;
     private int totalPoints;
     private List<StepDTO> steps;
+    private List<BloodSugarDTO> bloodSugars;
 
     @Getter
     @Setter
@@ -25,5 +26,13 @@ public class UserInfoDTO {
     public static class StepDTO {
         private int stepsCount;
         private LocalDate date;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    public static class BloodSugarDTO {
+        private int bloodSugar;
+        private LocalDateTime dateTime;
     }
 }

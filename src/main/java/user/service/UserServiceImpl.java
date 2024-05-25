@@ -52,6 +52,12 @@ public class UserServiceImpl implements UserService {
                                 .date(step.getDate())
                                 .build())
                         .collect(Collectors.toList()))//걸음수는 List로 묶어서 반환
+                .bloodSugars(user.getBloodSugars().stream()
+                        .map(bloodSugar -> UserInfoDTO.BloodSugarDTO.builder()
+                                .bloodSugar(bloodSugar.getBloodSugar())
+                                .dateTime(bloodSugar.getDateTime())
+                                .build())
+                                .collect(Collectors.toList()))//혈당을 List로 묶어서 반환
                 .build();
     }
 }
