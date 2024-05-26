@@ -43,6 +43,25 @@ const Period = () => {
   };
   return (
     <div>
+      <div className="flex flex-col items-center mt-1">
+        <span
+          className="text-gray-600 cursor-pointer underline mt-2"
+          onClick={() => setIsModalOpen(true)}
+        >
+          기간 선택
+        </span>
+        {selectedPeriod && (
+          <span
+            className="text-xl font-semibold dark:text-white mt-2 cursor-pointer"
+            onClick={() => setIsModalOpen(true)}
+          >
+            {`${formatDate(selectedPeriod.start)} ~ ${formatDate(
+              selectedPeriod.end
+            )}`}
+          </span>
+        )}
+      </div>
+
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
@@ -75,25 +94,6 @@ const Period = () => {
           ))}
         </div>
       </Modal>
-
-      <div className="flex flex-col items-center mt-1">
-        <span
-          className="text-gray-600 cursor-pointer underline mt-2"
-          onClick={() => setIsModalOpen(true)}
-        >
-          기간 선택
-        </span>
-        {selectedPeriod && (
-          <span
-            className="text-xl font-semibold dark:text-white mt-2"
-            onClick={() => setIsModalOpen(true)}
-          >
-            {`${formatDate(selectedPeriod.start)} ~ ${formatDate(
-              selectedPeriod.end
-            )}`}
-          </span>
-        )}
-      </div>
     </div>
   );
 };

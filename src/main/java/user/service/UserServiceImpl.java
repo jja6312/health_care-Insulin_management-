@@ -47,7 +47,8 @@ public class UserServiceImpl implements UserService {
         return UserInfoDTO.builder() //UserInfoDTO를 Return.
                 .empId(user.getEmpId())//사번
                 .totalPoints(user.getTotalPoints())//총 포인트
-                .createdAt(LocalDate.from(user.getCreatedAt()))
+                .createdAt(LocalDate.from(user.getCreatedAt()))//유저생성일
+                .stepGoal(user.getStepGoal())
                 .steps(user.getSteps().stream()//걸음수
                         .map(step -> UserInfoDTO.StepDTO.builder()
                                 .stepsCount(step.getStepsCount())

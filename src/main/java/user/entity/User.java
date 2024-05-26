@@ -20,6 +20,7 @@ public class User {
     private String password; // 패스워드
     private LocalDateTime createdAt; // 가입일
     private int totalPoints; //누적 포인트
+    private int stepGoal;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Steps> steps; //걸음수 목록
