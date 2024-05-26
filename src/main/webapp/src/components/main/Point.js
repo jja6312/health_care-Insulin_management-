@@ -22,10 +22,10 @@ const Point = () => {
     const id = Date.now(); // Unique ID
     setTexts((prevTexts) => [...prevTexts, { id, text }]);
 
-    // 텍스트를 일정 시간 후에 제거
+    // 텍스트를 2초 후 제거
     setTimeout(() => {
       setTexts((prevTexts) => prevTexts.filter((t) => t.id !== id));
-    }, 2000); // 2초 후 제거
+    }, 2000);
   };
 
   const handleKoriClick = () => {

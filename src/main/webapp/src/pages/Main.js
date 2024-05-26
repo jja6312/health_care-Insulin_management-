@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Modal from "react-modal";
-import { getUserInfo } from "../api/getUserInfo";
 import Header from "../components/main/Header";
-import { useUserInfoStore } from "../store/useUserInfoStore";
 import Point from "../components/main/Point";
-import { formatDate, getWeeklyPeriods, stripTime } from "../utils/dateUtils";
 import logo from "../assets/logo2.gif";
 import Period from "../components/main/Period";
+import Steps from "../components/main/Steps";
 
 Modal.setAppElement("#root");
 
@@ -22,8 +20,8 @@ const Main = () => {
         </span>
       </div>
       <Period />
-
       <Point />
+      <Steps />
     </div>
   );
 };

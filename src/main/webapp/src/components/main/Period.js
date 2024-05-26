@@ -3,12 +3,13 @@ import Modal from "react-modal";
 import { useUserInfoStore } from "../../store/useUserInfoStore";
 import { formatDate, getWeeklyPeriods, stripTime } from "../../utils/dateUtils";
 import { getUserInfo } from "../../api/getUserInfo";
+import { usePeriodStore } from "../../store/usePeriodStore";
 
 const Period = () => {
   const { setUserInfoDTO } = useUserInfoStore();
+  const { periods, setPeriods, selectedPeriod, setSelectedPeriod } =
+    usePeriodStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [periods, setPeriods] = useState([]);
-  const [selectedPeriod, setSelectedPeriod] = useState(null);
 
   useEffect(() => {
     const fetchAndCalculatePeriods = async () => {
