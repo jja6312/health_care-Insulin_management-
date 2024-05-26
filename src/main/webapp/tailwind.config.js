@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         // dark: "#1a202c", // 다크 모드 배경 색상
         dark: "#18171D", // 다크 모드 배경 색상
+        nhgreen: "#409e59",
+        nhblue: "#0078d4",
       },
     },
   },
