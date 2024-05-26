@@ -38,8 +38,8 @@ jobs:
       - name: Build React project
         run: |
           cd src/main/webapp
-          npm install --legacy-peer-deps # npm 호환문제로 인해 legacy코드 추가됨.
-          npm run build
+          npm install --legacy-peer-deps --loglevel=error
+          CI=false npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
