@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import ErrorPage from "./components/ErrorPage";
 import "./index.css";
 import Main from "./pages/Main";
-import useDarkMode from "./components/darkMode/useDarkMode";
+import useDarkMode from "./utils/darkMode/useDarkMode";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {

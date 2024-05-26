@@ -6,7 +6,12 @@ const checkSession = async () => {
     console.log("checkSession, response:" + response);
     return response.status === 200;
   } catch (error) {
-    console.error("세션 체크 실패", error);
+    if (error.response?.status === 403) {
+      console.log("로그아웃 진행. 세션이 만료되었습니다.");
+    } else {
+      console.error("세션 체크 실패", error);
+    }
+
     return false;
   }
 };

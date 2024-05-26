@@ -3,7 +3,8 @@ import Logo from "../assets/logo.svg";
 import DarkModeBtnCircle from "../components/darkMode/DarkModeBtnCircle";
 import { useLoginStore } from "../store/useLoginStore";
 import { useNavigate } from "react-router-dom";
-import handleSubmit from "../components/login/handleSubmit";
+
+import handleSubmit from "../utils/login/handleSubmit";
 import checkSession from "../api/checkSession";
 
 const Login = () => {

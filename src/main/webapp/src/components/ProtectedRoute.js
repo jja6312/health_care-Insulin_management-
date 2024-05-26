@@ -8,6 +8,7 @@ const ProtectedRoute = ({ element }) => {
   useEffect(() => {
     const validateSession = async () => {
       const isValid = await checkSession(); // http://.../api/check-session 발사!
+
       setIsAuthenticated(isValid);
     };
 
@@ -15,7 +16,7 @@ const ProtectedRoute = ({ element }) => {
   }, []);
 
   if (isAuthenticated === null) {
-    return <div className="min-h-screen dark:bg-dark">로딩중...</div>;
+    return <div className="min-h-screen dark:bg-dark">화면 이동중...</div>;
   }
 
   return isAuthenticated ? element : <Navigate to="/login" />;

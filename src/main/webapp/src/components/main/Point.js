@@ -1,12 +1,20 @@
 import React from "react";
-import kori from "../../assets/코리.png";
+
+import MobilePoint from "./mobile/MobilePoint";
+import DesktopPoint from "./desktop/DesktopPoint";
 
 const Point = () => {
   return (
-    <div className="flex justify-center items-center gap-4 mt-6">
-      <img className="w-24" alt="코리" src={kori} />
-      <span className="dark:text-white text-5xl font-semibold">62</span>
-      <span className="text-[#AEDDE8] text-3xl font-bold">코리</span>
+    // grid로 1:2:2:2:1 배치
+    <div>
+      {/* 모바일 */}
+      <div className="md:hidden">
+        <MobilePoint />
+      </div>
+      {/* 데스크탑 */}
+      <div className="hidden md:flex">
+        <DesktopPoint />
+      </div>
     </div>
   );
 };

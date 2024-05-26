@@ -1,5 +1,6 @@
 import React from "react";
 import { useUserInfoStore } from "../../store/useUserInfoStore";
+import handleLogout from "../../utils/login/handleLogout";
 
 const Header = () => {
   const { userInfoDTO } = useUserInfoStore();
@@ -10,7 +11,10 @@ const Header = () => {
         {userInfoDTO?.empId} 님
       </span>
       <span className="dark:text-gray-500 mx-3 text-gray-600"> | </span>
-      <span className="dark:text-gray-500 text-gray-600 cursor-pointer underline">
+      <span
+        className="dark:text-gray-500 text-gray-600 cursor-pointer underline"
+        onClick={handleLogout}
+      >
         로그아웃
       </span>
     </div>
