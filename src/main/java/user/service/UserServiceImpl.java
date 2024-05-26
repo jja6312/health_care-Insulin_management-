@@ -8,6 +8,7 @@ import user.dto.UserInfoDTO;
 import user.entity.User;
 import user.repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
         return UserInfoDTO.builder() //UserInfoDTO를 Return.
                 .empId(user.getEmpId())//사번
                 .totalPoints(user.getTotalPoints())//총 포인트
+                .createdAt(LocalDate.from(user.getCreatedAt()))
                 .steps(user.getSteps().stream()//걸음수
                         .map(step -> UserInfoDTO.StepDTO.builder()
                                 .stepsCount(step.getStepsCount())

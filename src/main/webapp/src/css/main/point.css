@@ -1,0 +1,61 @@
+/* point.css */
+@keyframes koriJump {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+  30% {
+    transform: translateY(-30px) rotate(-10deg);
+  }
+  40% {
+    transform: translateY(-30px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(-10deg);
+  }
+  60% {
+    transform: translateY(-30px) rotate(10deg);
+  }
+  70% {
+    transform: translateY(-20px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.kori {
+  transition: transform 0.2s;
+}
+
+.kori.jump {
+  animation: koriJump 1s ease-in-out;
+}
+
+@keyframes textFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+.point-text {
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: textFloat 2s ease-in-out;
+}

@@ -17,6 +17,7 @@ import java.util.List;
 public class UserInfoDTO {
     private String empId;
     private int totalPoints;
+    private LocalDate createdAt;
     private List<StepDTO> steps;
     private List<BloodSugarDTO> bloodSugars;
 

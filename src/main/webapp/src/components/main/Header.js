@@ -7,10 +7,10 @@ const Header = () => {
 
   return (
     <div className="w-full flex justify-end my-2 ">
-      <span className=" text-gray-400 ">{userInfoDTO?.empId} 님</span>
-      <span className=" mx-3 text-gray-400"> | </span>
+      <span className=" text-gray-600 ">{userInfoDTO?.empId} 님</span>
+      <span className=" mx-3 text-gray-600"> | </span>
       <span
-        className=" text-gray-400 cursor-pointer underline"
+        className=" text-gray-600 cursor-pointer underline"
         onClick={handleLogout}
       >
         로그아웃
