@@ -5,6 +5,7 @@ import Point from "../components/main/Point";
 import logo from "../assets/logo2.gif";
 import Period from "../components/main/Period";
 import Steps from "../components/main/Steps";
+import BloodSurgarVer2 from "../components/main/bloodSugarVer2/BloodSurgarVer2";
 
 Modal.setAppElement("#root");
 
@@ -22,6 +23,7 @@ const Main = () => {
       <Period />
       <Point />
       <Steps />
+      <BloodSurgarVer2 />
     </div>
   );
 };

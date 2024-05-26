@@ -135,7 +135,8 @@ const ChartStep = () => {
         offset: -5, // 막대에서 레이블을 떨어뜨리는 거리 설정
         clip: false, // 레이블이 차트 영역을 벗어나지 않도록 설정
         formatter: (value) => value.toLocaleString(), // 천 단위 콤마 추가
-        color: "#C4DFB3",
+        // color: "#C4DFB3",
+        color: "#aedc91",
         font: {
           weight: "bold",
           size: 16,
@@ -145,7 +146,7 @@ const ChartStep = () => {
   };
 
   return (
-    <div className="w-[90%] h-[160px] mt-6">
+    <div className="w-[90%] h-[160px] mt-6 ">
       <Bar data={chartData} options={options} />
     </div>
   );
