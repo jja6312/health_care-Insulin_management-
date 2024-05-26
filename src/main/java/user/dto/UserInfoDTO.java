@@ -21,6 +21,7 @@ public class UserInfoDTO {
     private LocalDate createdAt;
     private List<StepDTO> steps;
     private List<BloodSugarDTO> bloodSugars;
+    private List<BloodSugarVer2DTO> bloodSugarsVer2;
 
     @Getter
     @Setter
@@ -35,6 +36,14 @@ public class UserInfoDTO {
     @Builder
     public static class BloodSugarDTO {
         private int bloodSugar;
+        private LocalDateTime dateTime;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    public static class BloodSugarVer2DTO {
+        private int bloodSugarVer2;
         private LocalDateTime dateTime;
     }
 }

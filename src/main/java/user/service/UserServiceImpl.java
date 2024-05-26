@@ -49,19 +49,31 @@ public class UserServiceImpl implements UserService {
                 .totalPoints(user.getTotalPoints())//총 포인트
                 .createdAt(LocalDate.from(user.getCreatedAt()))//유저생성일
                 .stepGoal(user.getStepGoal())
-                .steps(user.getSteps().stream()//걸음수
-                        .sorted((s1,s2) -> s1.getDate().compareTo(s2.getDate()))//날짜순으로 정렬
+
+                //걸음수
+                .steps(user.getSteps().stream()
+                        .sorted((s1, s2) -> s1.getDate().compareTo(s2.getDate()))//날짜순으로 정렬
                         .map(step -> UserInfoDTO.StepDTO.builder()
                                 .stepsCount(step.getStepsCount())
                                 .date(step.getDate())
                                 .build())
                         .collect(Collectors.toList()))//걸음수는 List로 묶어서 반환
+
+                //혈당
                 .bloodSugars(user.getBloodSugars().stream()
                         .map(bloodSugar -> UserInfoDTO.BloodSugarDTO.builder()
                                 .bloodSugar(bloodSugar.getBloodSugar())
                                 .dateTime(bloodSugar.getDateTime())
                                 .build())
-                                .collect(Collectors.toList()))//혈당을 List로 묶어서 반환
+                        .collect(Collectors.toList()))//혈당을 List로 묶어서 반환
+
+                //혈당(리브레)
+                .bloodSugarsVer2(user.getBloodSugarsVer2().stream()
+                        .map(bloodSugarsVer2 -> UserInfoDTO.BloodSugarVer2DTO.builder()
+                                .bloodSugarVer2(bloodSugarsVer2.getBloodSugarVer2())
+                                .dateTime(bloodSugarsVer2.getDateTime())
+                                .build())
+                        .collect(Collectors.toList()))
                 .build();
     }
 }
