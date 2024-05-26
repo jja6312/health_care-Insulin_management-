@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
                 .createdAt(LocalDate.from(user.getCreatedAt()))//유저생성일
                 .stepGoal(user.getStepGoal())
                 .steps(user.getSteps().stream()//걸음수
+                        .sorted((s1,s2) -> s1.getDate().compareTo(s2.getDate()))//날짜순으로 정렬
                         .map(step -> UserInfoDTO.StepDTO.builder()
                                 .stepsCount(step.getStepsCount())
                                 .date(step.getDate())

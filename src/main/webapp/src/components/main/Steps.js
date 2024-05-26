@@ -4,12 +4,12 @@ import { usePeriodStore } from "../../store/usePeriodStore";
 import { useStepStore } from "../../store/useStepStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import ChartStep from "./step/ChartStep";
 
 const Steps = () => {
   const { userInfoDTO } = useUserInfoStore();
   const { selectedPeriod } = usePeriodStore();
-  const { setStepsInPeriod, setAverageSteps, stepsInPeriod, averageSteps } =
-    useStepStore();
+  const { setStepsInPeriod, setAverageSteps, averageSteps } = useStepStore();
   const [moreOrLessStep, setMoreOrLessStep] = useState(false);
   const [subStep, setSubStep] = useState(0);
 
@@ -33,7 +33,7 @@ const Steps = () => {
     if (userInfoDTO?.stepGoal && averageSteps) {
       stepGoalSubAvgerageStep(userInfoDTO.stepGoal);
     }
-  }, [userInfoDTO, averageSteps]);
+  }, [userInfoDTO, averageSteps, stepGoalSubAvgerageStep]);
 
   useEffect(() => {
     if (selectedPeriod && userInfoDTO.steps) {
@@ -48,7 +48,7 @@ const Steps = () => {
         return stepDate >= startDate && stepDate <= endDate;
       });
 
-      console.log("Steps in Period:", stepsInPeriod);
+      console.log("stepsInPeriod:", stepsInPeriod);
       setStepsInPeriod(stepsInPeriod);
 
       const totalSteps = stepsInPeriod.reduce(
@@ -64,7 +64,7 @@ const Steps = () => {
   }, [selectedPeriod, userInfoDTO, setStepsInPeriod, setAverageSteps]);
 
   return (
-    <div className="flex flex-col justify-center items-center mt-8">
+    <div className="flex flex-col justify-center items-center mt-10">
       <div className="flex justify-center ">
         <div className="flex items-center text-[27px] font-semibold">
           <FontAwesomeIcon
@@ -89,6 +89,7 @@ const Steps = () => {
           {subStep}걸음 {moreOrLessStep ? "더" : "적게"} 걸었어요
         </span>
       </div>
+      <ChartStep />
     </div>
   );
 };

@@ -35,7 +35,7 @@ const Period = () => {
       setSelectedPeriod(currentPeriod);
     };
     fetchAndCalculatePeriods();
-  }, [setUserInfoDTO]);
+  }, [setUserInfoDTO, setPeriods, setSelectedPeriod]);
 
   const handlePeriodSelect = (period) => {
     setSelectedPeriod(period);
