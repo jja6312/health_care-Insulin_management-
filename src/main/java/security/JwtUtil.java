@@ -16,8 +16,8 @@ public class JwtUtil {
     @Value("${jwt.secret}")
     private String SECRET_KEY;
 
-    private static final long ACCESS_TOKEN_VALIDITY = 1000 * 60 * 15; // 15 minutes
-    private static final long REFRESH_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 7; // 7 days
+    private static final long ACCESS_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 7; // 7일
+    private static final long REFRESH_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 31; // 31 days
 
     public String generateAccessToken(User user) {
         return generateToken(user.getEmpId(), ACCESS_TOKEN_VALIDITY);

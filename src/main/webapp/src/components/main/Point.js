@@ -67,7 +67,7 @@ const Point = () => {
         </span>
       </div>
       <div className="flex items-center justify-center w-1/4 md:w-1/12">
-        <span className="text-[#55aed4] dark:text-[#AEDDE8] text-2xl font-bold">
+        <span className="text-[#55aed4] dark:text-[#AEDDE8] text-2xl font-bold -translate-x-2 translate-y-1">
           코리
         </span>
       </div>
