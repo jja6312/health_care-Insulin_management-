@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { getUserInfo } from "../api/getUserInfo";
 import Header from "../components/main/Header";
 import { useUserInfoStore } from "../store/useUserInfoStore";
@@ -11,7 +11,6 @@ const Main = () => {
       const userInfo = await getUserInfo();
       setUserInfoDTO(userInfo);
     };
-
     fetchUserInfo();
   }, []);
 
