@@ -27,9 +27,9 @@ const BloodSurgarVer2 = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-start mt-10">
+    <div className="flex flex-col justify-center items-center mt-10">
       <div className="flex justify-center">
-        <div className="flex items-center text-[27px] font-semibold">
+        <div className="flex items-center text-[22px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
             className={isNormal ? "text-nhgreen" : "text-orange-400"}
             size="lg"
@@ -48,7 +48,7 @@ const BloodSurgarVer2 = () => {
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="flex justify-center items-center font-semibold mt-2">
+        <div className="flex justify-center items-center font-semibold mt-2 text-[12px]">
           <span className="text-gray-500">{userInfoDTO.empId}님은</span>
           <span
             className={` ml-2 

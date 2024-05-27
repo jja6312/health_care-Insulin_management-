@@ -71,9 +71,9 @@ const Steps = () => {
   }, [selectedPeriod, userInfoDTO, setStepsInPeriod, setAverageSteps]);
 
   return (
-    <div className="flex flex-col justify-center items-start mt-10">
+    <div className="flex flex-col justify-center items-center mt-10">
       <div className="flex justify-center ">
-        <div className="flex items-center text-[27px] font-semibold">
+        <div className="flex items-center text-[20px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
             className={stepColor}
             size="lg"
@@ -89,7 +89,7 @@ const Steps = () => {
 
       {/* 목표보다 얼마나 더걸었는지 표시 */}
       <div className="w-full flex justify-center">
-        <div className="flex justify-center items-center font-semibold mt-2">
+        <div className="flex justify-center items-center font-semibold mt-2 text-[12px]">
           <span className="text-gray-500">
             목표 {numberFormat(userInfoDTO?.stepGoal)}걸음 대비
           </span>
