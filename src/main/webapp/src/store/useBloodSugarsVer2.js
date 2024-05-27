@@ -3,6 +3,7 @@ import { create } from "zustand";
 const useBloodSugarsVer2Store = create((set) => ({
   averageBloodSugar: null,
   isNormal: true,
+  bloodSugarVer2InPeriod: [],
   calculateAverageBloodSugar: (bloodSugarsVer2, start, end) => {
     const filteredBloodSugars = bloodSugarsVer2.filter((entry) => {
       const date = new Date(entry.dateTime);
@@ -26,6 +27,8 @@ const useBloodSugarsVer2Store = create((set) => ({
       });
     }
   },
+  setBloodSugarVer2InPeriod: (bloodSugarVer2InPeriod) =>
+    set({ bloodSugarVer2InPeriod }),
 }));
 
 export default useBloodSugarsVer2Store;

@@ -72,7 +72,7 @@ const Steps = () => {
   }, [selectedPeriod, userInfoDTO, setStepsInPeriod, setAverageSteps]);
 
   return (
-    <div className="relative flex flex-col justify-center items-center mt-10">
+    <div className="relative flex flex-col justify-center items-center pt-5 mt-5 ">
       <div className="flex justify-center ">
         <div className="flex items-center text-[20px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
@@ -90,13 +90,15 @@ const Steps = () => {
 
       {/* 목표보다 얼마나 더걸었는지 표시 */}
       <div className="w-full flex justify-center">
-        <div className="flex justify-center items-center font-semibold mt-2 text-[12px]">
+        <div className="flex justify-center items-center font-bold mt-2 text-[13px]">
           <span className="text-gray-500">
             목표 {numberFormat(userInfoDTO?.stepGoal)}걸음 대비
           </span>
           <span
             className={` ml-2 ${
-              moreOrLessStep ? "text-nhgreen" : "text-orange-300"
+              moreOrLessStep
+                ? "text-nhgreen"
+                : "dark:text-orange-300 text-orange-400"
             }`}
           >
             {numberFormat(subStep)}걸음 {moreOrLessStep ? "더" : "적게"}{" "}
@@ -109,9 +111,14 @@ const Steps = () => {
       </div>
       {stepsInPeriod.length === 0 && (
         <>
-          <div className="absolute flex flex-col justify-center items-center bg-black opacity-80 w-full h-full text-white text-xl">
-            <span>해당 기간의</span>
-            <span>걸음수가 아직 입력되지 않았어요😊</span>
+          <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white ">
+            <span className="text-xl">해당 기간의</span>
+            <span className="text-yellow-300 text-2xl">
+              👟걸음수가 집계되지 않았어요
+            </span>
+            <span className="text-[16px] text-gray-400">
+              (미래전략 박수빈 계장에게 데이터를 보내주세요)
+            </span>
           </div>
           <div className="h-[160px]"></div>
         </>

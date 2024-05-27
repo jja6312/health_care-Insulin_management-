@@ -16,7 +16,7 @@ const Main = () => {
 
       <div className="flex justify-center mt-1 gap-2">
         <img src={logo} className="w-7" alt="logo" />
-        <span className="text-[27px] text-nhblue dark:text-nhblue font-semibold">
+        <span className="text-[27px] text-nhblue dark:text-nhblue font-extrabold">
           NH 당뇨관리 리포트
         </span>
       </div>
