@@ -119,7 +119,7 @@ const ChartBloodSugarVer2 = () => {
   };
 
   return (
-    <div className="w-[90%] h-[160px] mt-6">
+    <div className="w-[90%] h-[160px] mt-6 flex justify-center">
       <Scatter options={options} data={data} />
     </div>
   );
