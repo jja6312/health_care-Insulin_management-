@@ -5,7 +5,6 @@ import useBloodSugarsVer2 from "../../../store/useBloodSugarsVer2"; // 수정된
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { usePeriodStore } from "../../../store/usePeriodStore";
-import { Chart } from "chart.js";
 import ChartBloodSugarVer2 from "./ChartBloodSugarVer2";
 
 const BloodSurgarVer2 = () => {
@@ -21,16 +20,21 @@ const BloodSurgarVer2 = () => {
 
   useEffect(() => {
     if (userInfoDTO && userInfoDTO.bloodSugarsVer2) {
+      const endOfDay = new Date(selectedPeriod.end);
+      endOfDay.setHours(23, 59, 59, 999);
+
       calculateAverageBloodSugar(
         userInfoDTO.bloodSugarsVer2,
         selectedPeriod.start,
-        selectedPeriod.end
+        endOfDay
       );
+
+      console.log("userInfoDTO.bloodSugarsVer2", userInfoDTO.bloodSugarsVer2);
 
       const bloodSugarVer2InPeriod = userInfoDTO.bloodSugarsVer2.filter(
         (entry) => {
           const date = new Date(entry.dateTime);
-          return date >= selectedPeriod.start && date <= selectedPeriod.end;
+          return date >= selectedPeriod.start && date <= endOfDay;
         }
       );
       setBloodSugarVer2InPeriod(bloodSugarVer2InPeriod);

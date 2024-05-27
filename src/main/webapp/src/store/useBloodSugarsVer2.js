@@ -1,13 +1,17 @@
 import { create } from "zustand";
 
-const useBloodSugarsVer2Store = create((set) => ({
+const useBloodSugarsVer2 = create((set) => ({
   averageBloodSugar: null,
   isNormal: true,
   bloodSugarVer2InPeriod: [],
   calculateAverageBloodSugar: (bloodSugarsVer2, start, end) => {
+    // end 날짜를 포함하기 위해 23:59:59로 설정
+    const endOfDay = new Date(end);
+    endOfDay.setHours(23, 59, 59, 999);
+
     const filteredBloodSugars = bloodSugarsVer2.filter((entry) => {
       const date = new Date(entry.dateTime);
-      return date >= start && date <= end;
+      return date >= start && date <= endOfDay;
     });
 
     if (filteredBloodSugars.length > 0) {
@@ -31,4 +35,4 @@ const useBloodSugarsVer2Store = create((set) => ({
     set({ bloodSugarVer2InPeriod }),
 }));
 
-export default useBloodSugarsVer2Store;
+export default useBloodSugarsVer2;
