@@ -10,7 +10,8 @@ import numberFormat from "../../utils/numberFormat";
 const Steps = () => {
   const { userInfoDTO } = useUserInfoStore();
   const { selectedPeriod } = usePeriodStore();
-  const { setStepsInPeriod, setAverageSteps, averageSteps } = useStepStore();
+  const { stepsInPeriod, setStepsInPeriod, setAverageSteps, averageSteps } =
+    useStepStore();
   const [moreOrLessStep, setMoreOrLessStep] = useState(false);
   const [subStep, setSubStep] = useState(0);
   const [stepColor, setStepColor] = useState("text-nhgreen");
@@ -71,7 +72,7 @@ const Steps = () => {
   }, [selectedPeriod, userInfoDTO, setStepsInPeriod, setAverageSteps]);
 
   return (
-    <div className="flex flex-col justify-center items-center mt-10">
+    <div className="relative flex flex-col justify-center items-center mt-10">
       <div className="flex justify-center ">
         <div className="flex items-center text-[20px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
@@ -106,6 +107,15 @@ const Steps = () => {
       <div className="w-full flex justify-center">
         <ChartStep />
       </div>
+      {stepsInPeriod.length === 0 && (
+        <>
+          <div className="absolute flex flex-col justify-center items-center bg-black opacity-80 w-full h-full text-white text-xl">
+            <span>해당 기간의</span>
+            <span>걸음수가 아직 입력되지 않았어요😊</span>
+          </div>
+          <div className="h-[160px]"></div>
+        </>
+      )}
     </div>
   );
 };

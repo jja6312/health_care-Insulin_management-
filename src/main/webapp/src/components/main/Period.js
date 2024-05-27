@@ -38,6 +38,10 @@ const Period = () => {
   }, [setUserInfoDTO, setPeriods, setSelectedPeriod]);
 
   const handlePeriodSelect = (period) => {
+    if (period.start > new Date()) {
+      alert("아직 시작되지 않은 기간입니다.");
+      return;
+    }
     setSelectedPeriod(period);
     setIsModalOpen(false);
   };
@@ -45,7 +49,7 @@ const Period = () => {
     <div>
       <div className="flex flex-col items-center mt-1">
         <span
-          className="text-gray-600 cursor-pointer underline mt-2"
+          className="text-gray-600 cursor-pointer underline mt-2 hover:opacity-70"
           onClick={() => setIsModalOpen(true)}
         >
           기간 선택
@@ -66,7 +70,7 @@ const Period = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Select Period"
-        className="modal dark:bg-dark dark:text-white h-52 overflow-y-scroll"
+        className="modal dark:bg-dark dark:text-white h-64 overflow-y-scroll"
         overlayClassName="overlay"
       >
         <div className="flex flex-col justify-center">
@@ -81,7 +85,10 @@ const Period = () => {
                     selectedPeriod && selectedPeriod.week === period.week
                       ? "text-nhblue font-bold"
                       : ""
-                  }`}
+                  }
+                  
+                  ${period.start > new Date() && "text-gray-600"}
+                  `}
                   onClick={() => handlePeriodSelect(period)}
                 >
                   {`(${period.week}주차) ${formatDate(

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useUserInfoStore } from "../../../store/useUserInfoStore";
-import useBloodSugarsVer2Store from "../../../store/useBloodSugarsVer2"; // 수정된 경로에 따라 변경
+import useBloodSugarsVer2 from "../../../store/useBloodSugarsVer2"; // 수정된 경로에 따라 변경
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,7 @@ import { usePeriodStore } from "../../../store/usePeriodStore";
 const BloodSurgarVer2 = () => {
   const { userInfoDTO } = useUserInfoStore();
   const { averageBloodSugar, isNormal, calculateAverageBloodSugar } =
-    useBloodSugarsVer2Store();
+    useBloodSugarsVer2();
   const { selectedPeriod } = usePeriodStore(); // 수정된 경로에 따라 변경
 
   useEffect(() => {
@@ -66,6 +66,14 @@ const BloodSurgarVer2 = () => {
           </span>
         </div>
       </div>
+      {/* {stepsInPeriod.length === 0 && (
+        <>
+          <div className="absolute flex justify-center items-center bg-black opacity-80 w-full h-full text-white ">
+            <span>해당 기간 걸음수가 아직 입력되지 않았어요😊</span>
+          </div>
+          <div className="h-[160px]"></div>
+        </>
+      )} */}
     </div>
   );
 };
