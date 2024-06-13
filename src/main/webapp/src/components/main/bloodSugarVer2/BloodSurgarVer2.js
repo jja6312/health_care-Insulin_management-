@@ -97,12 +97,12 @@ const BloodSurgarVer2 = () => {
       </div>
       {bloodSugarVer2InPeriod.length === 0 && (
         <>
-          <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white ">
+          <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white -translate-y-5">
             <span className="text-xl">해당 기간의</span>
-            <span className="text-2xl text-yellow-300">
+            <span className="text-[20px] text-yellow-300">
               💉혈당이 아직 집계되지 않았어요
             </span>
-            <span className="text-[16px] text-gray-400">
+            <span className="text-[12px] text-gray-400">
               (미래전략 박수빈 계장에게 데이터를 보내주세요)
             </span>
           </div>

@@ -6,7 +6,7 @@ export const usePointStore = create((set) => ({
     set((state) => {
       const newTexts =
         typeof update === "function" ? update(state.texts) : update;
-      console.log("Setting texts:", newTexts); // Debug log
+      // console.log("Setting texts:", newTexts); // Debug log
       return { texts: newTexts };
     });
   },

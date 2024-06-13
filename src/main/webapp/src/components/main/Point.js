@@ -9,7 +9,7 @@ const Point = ({ onKoriClick }) => {
   const { userInfoDTO } = useUserInfoStore();
   const { texts } = usePointStore();
 
-  console.log("Current texts:", texts); // Debug log
+  // console.log("Current texts:", texts); // Debug log
 
   return (
     // grid로 1:2:2:2:1 배치

@@ -11,17 +11,23 @@ import BloodSurgarVer2 from "../components/main/bloodSugarVer2/BloodSurgarVer2";
 import { textArray } from "../utils/point/pointText";
 import { handleKoriClick } from "../utils/point/pointHelpers";
 import { usePointStore } from "../store/usePointStore";
+import { usePopupStore } from "../store/usePopupStore";
+import Popup from "../components/main/popup/Popup";
 
 Modal.setAppElement("#root");
 
 const Main = () => {
   const { setTexts } = usePointStore();
+  const { openPopup } = usePopupStore();
+
   return (
     <div
       className="dark:bg-dark min-h-screen flex flex-col py-1 px-6"
       onClick={() => handleKoriClick(setTexts, textArray)}
     >
       <Header />
+
+      {openPopup && <Popup />}
 
       <div className="flex justify-center mt-1 gap-2">
         <img src={logo} className="w-7" alt="logo" />

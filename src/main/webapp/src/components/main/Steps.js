@@ -113,10 +113,10 @@ const Steps = () => {
         <>
           <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white ">
             <span className="text-xl">해당 기간의</span>
-            <span className="text-yellow-300 text-2xl">
+            <span className="text-yellow-300 text-[20px]">
               👟걸음수가 집계되지 않았어요
             </span>
-            <span className="text-[16px] text-gray-400">
+            <span className="text-[12px] text-gray-400">
               (미래전략 박수빈 계장에게 데이터를 보내주세요)
             </span>
           </div>
