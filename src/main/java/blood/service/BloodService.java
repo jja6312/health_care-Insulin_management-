@@ -13,6 +13,6 @@ public class BloodService {
 
     public Double getAverageBloodSugarInPeriod(LocalDateTime start, LocalDateTime end) {
 
-        return bloodRepository.findAverageBloodSugarInPeriod(start,end);
+        return bloodRepository.findAverageBloodSugarCountInPeriod(start,end);
     }
 }

@@ -36,13 +36,13 @@ const BloodProgressKori = () => {
         </span>
       </div>
       <div className="flex justify-center items-end pb-12 w-full h-full">
-        <div className="relative w-10/12 h-[6px] bg-gray-400 dark:bg-[#425769]">
+        <div className="relative w-10/12 h-[6px] bg-nhblue">
           {/* 0 */}
           <div
-            className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
+            className="absolute w-5 rounded-full bg-nhblue h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "0%" }}
           >
-            <div className="absolute w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-400 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           {bloodSugarVer2InPeriod.length === 0 && (
             <img
@@ -54,7 +54,7 @@ const BloodProgressKori = () => {
           )}
           {/* 1 */}
           <div
-            className="absolute w-4 h-4 rounded-full bg-gray-400 dark:bg-[#425769] transform -translate-x-1/2 -translate-y-1/4"
+            className="absolute w-4 h-4 rounded-full bg-nhblue transform -translate-x-1/2 -translate-y-1/4"
             style={{ left: "14.29%" }}
           ></div>
           {bloodSugarVer2InPeriod.length === 1 && (
@@ -67,7 +67,7 @@ const BloodProgressKori = () => {
           )}
           {/* 2 */}
           <div
-            className="absolute w-4 h-4 rounded-full bg-gray-400 dark:bg-[#425769] transform -translate-x-1/2 -translate-y-1/4"
+            className="absolute w-4 h-4 rounded-full bg-nhblue transform -translate-x-1/2 -translate-y-1/4"
             style={{ left: "28.57%" }}
           ></div>
           {bloodSugarVer2InPeriod.length === 2 && (
@@ -80,13 +80,13 @@ const BloodProgressKori = () => {
           )}
           {/* 3 */}
           <div
-            className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
+            className="absolute w-5 rounded-full bg-nhblue h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "42.86%" }}
           >
-            <div className="absolute w-3 h-3 rounded-full text-blue-200  bg-[#6A8BA8] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute w-3 h-3 rounded-full   bg-gray-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <div
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
-            text-blue-200 dark:text-[#6A8BA8] gap-[1px] font-semibold"
+            text-gray-400 gap-[1px] font-semibold"
             >
               <span className="">최소</span>
               <span className="text-lg">3</span>
@@ -102,7 +102,7 @@ const BloodProgressKori = () => {
           )}
           {/* 4 */}
           <div
-            className="absolute w-4 h-4 rounded-full bg-gray-400 dark:bg-[#425769] transform -translate-x-1/2 -translate-y-1/4"
+            className="absolute w-4 h-4 rounded-full bg-nhblue transform -translate-x-1/2 -translate-y-1/4"
             style={{ left: "57.14%" }}
           ></div>
           {bloodSugarVer2InPeriod.length === 4 && (
@@ -115,13 +115,13 @@ const BloodProgressKori = () => {
           )}
           {/* 5 */}
           <div
-            className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
+            className="absolute w-5 rounded-full bg-nhblue h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "71.43%" }}
           >
-            <div className="absolute w-3 h-3 rounded-full bg-[#96C4ED] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute w-3 h-3 rounded-full bg-gray-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <div
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
-            text-[#96C4ED] gap-[1px] font-semibold"
+            text-gray-500 dark:text-gray-300 gap-[1px] font-semibold"
             >
               <span className="">권장</span>
               <span className="text-lg">5</span>
@@ -137,7 +137,7 @@ const BloodProgressKori = () => {
           )}
           {/* 6 */}
           <div
-            className="absolute w-4 h-4 rounded-full bg-gray-400 dark:bg-[#425769] transform -translate-x-1/2 -translate-y-1/4"
+            className="absolute w-4 h-4 rounded-full bg-nhblue transform -translate-x-1/2 -translate-y-1/4"
             style={{ left: "85.71%" }}
           ></div>
           {bloodSugarVer2InPeriod.length === 6 && (
@@ -150,13 +150,13 @@ const BloodProgressKori = () => {
           )}
           {/* 7 */}
           <div
-            className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
+            className="absolute w-5 rounded-full bg-nhblue h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "100%" }}
           >
-            <div className="absolute w-3 h-3 rounded-full bg-nhblue dark:bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute w-3 h-3 rounded-full bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <div
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
-            text-nhblue dark:text-white gap-[1px] font-semibold"
+            text-black dark:text-white gap-[1px] font-semibold"
             >
               <span className="">우수</span>
               <span className="text-lg">7</span>
