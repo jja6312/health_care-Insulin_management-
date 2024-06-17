@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { usePeriodStore } from "../../../store/usePeriodStore";
 import ChartBloodSugarVer2 from "./ChartBloodSugarVer2";
+import BloodProgressKori from "./BloodProgressKori";
 
 const BloodSurgarVer2 = () => {
   const { userInfoDTO } = useUserInfoStore();
@@ -92,10 +93,14 @@ const BloodSurgarVer2 = () => {
           </span>
         </div>
       </div>
-      <div className="w-full flex justify-center">
+
+      {/* 혈당차트  */}
+      {/* <div className="w-full flex justify-center">
         <ChartBloodSugarVer2 />
-      </div>
-      {bloodSugarVer2InPeriod.length === 0 && (
+      </div> */}
+
+      {/* 모달 */}
+      {/* {bloodSugarVer2InPeriod.length === 0 && (
         <>
           <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white -translate-y-5">
             <span className="text-xl">해당 기간의</span>
@@ -108,7 +113,9 @@ const BloodSurgarVer2 = () => {
           </div>
           <div className="h-[180px]"></div>
         </>
-      )}
+      )} */}
+
+      <BloodProgressKori />
     </div>
   );
 };

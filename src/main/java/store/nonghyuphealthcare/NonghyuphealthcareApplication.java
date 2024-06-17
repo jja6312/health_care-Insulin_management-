@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"config","security","exception", "user.*", "main.*"})
+@ComponentScan(basePackages = {"config","security","exception", "user.*", "main.*", "blood.*"})
 @EntityScan(basePackages = {"user.entity"})
-@EnableJpaRepositories(basePackages = {"user.repository"})
+@EnableJpaRepositories(basePackages = {"user.repository", "blood.repository"})
 public class NonghyuphealthcareApplication {
 
     public static void main(String[] args) {

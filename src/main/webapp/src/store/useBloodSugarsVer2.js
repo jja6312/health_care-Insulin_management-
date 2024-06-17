@@ -1,7 +1,9 @@
 import { create } from "zustand";
 
 const useBloodSugarsVer2 = create((set) => ({
-  averageBloodSugar: null,
+  bloodCountAvgInPeriod: 0, //전체유저 혈당 체크 회수 평균
+
+  averageBloodSugar: null, // 개인 혈당 평균
   isNormal: true,
   bloodSugarVer2InPeriod: [],
   calculateAverageBloodSugar: (bloodSugarsVer2, start, end) => {
@@ -31,6 +33,8 @@ const useBloodSugarsVer2 = create((set) => ({
       });
     }
   },
+  setBloodCountAvgInPeriod: (bloodCountAvgInPeriod) =>
+    set({ bloodCountAvgInPeriod }),
   setBloodSugarVer2InPeriod: (bloodSugarVer2InPeriod) =>
     set({ bloodSugarVer2InPeriod }),
 }));
