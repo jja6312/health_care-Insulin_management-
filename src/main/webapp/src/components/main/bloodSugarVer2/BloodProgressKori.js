@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import superKori from "../../../assets/superKori.png";
 import "../../../css/main/bloodSugarVer2/superKori.css";
 import useBloodSugarsVer2 from "../../../store/useBloodSugarsVer2";
+import { getBloodCountAvgInPeriod } from "../../../api/getBloodCountAvgInPeriod";
+import { usePeriodStore } from "../../../store/usePeriodStore";
 
 const BloodProgressKori = () => {
-  const { bloodSugarVer2InPeriod } = useBloodSugarsVer2();
+  const {
+    bloodSugarVer2InPeriod,
+    bloodCountAvgInPeriod,
+    setBloodCountAvgInPeriod,
+  } = useBloodSugarsVer2();
+  const { selectedPeriod } = usePeriodStore();
+
+  useEffect(() => {
+    const fetchBloodCountAvgInPeriod = async () => {
+      const bloodCountAvgInPeriod = await getBloodCountAvgInPeriod(
+        selectedPeriod.start,
+        selectedPeriod.end
+      );
+      console.log(
+        "bloodCountAvgInPeriod(기간별 유저 평균 혈당측정횟수)",
+        bloodCountAvgInPeriod
+      );
+      setBloodCountAvgInPeriod(bloodCountAvgInPeriod);
+    };
+    fetchBloodCountAvgInPeriod();
+  }, [selectedPeriod]);
 
   return (
     <div className="w-full border-4 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col">
       <div className="w-full flex justify-end">
-        <span className="text-gray-500 text-sm mr-4 mt-2">*평균 : xxx</span>
+        <span className="text-gray-500 text-sm mr-4 mt-2">
+          *평균 : {bloodCountAvgInPeriod}
+        </span>
       </div>
       <div className="flex justify-center items-end pb-12 w-full h-full">
         <div className="relative w-10/12 h-[6px] bg-gray-400 dark:bg-[#425769]">
@@ -17,7 +41,9 @@ const BloodProgressKori = () => {
           <div
             className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "0%" }}
-          ></div>
+          >
+            <div className="absolute w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+          </div>
           {bloodSugarVer2InPeriod.length === 0 && (
             <img
               src={superKori}
@@ -57,7 +83,7 @@ const BloodProgressKori = () => {
             className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "42.86%" }}
           >
-            <div className="absolute w-3 h-3 rounded-full text-blue-200 dark:bg-[#6A8BA8] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute w-3 h-3 rounded-full text-blue-200  bg-[#6A8BA8] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <div
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
             text-blue-200 dark:text-[#6A8BA8] gap-[1px] font-semibold"
