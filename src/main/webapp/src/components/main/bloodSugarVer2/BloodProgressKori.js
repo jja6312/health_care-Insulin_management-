@@ -32,7 +32,7 @@ const BloodProgressKori = () => {
     <div className="w-full border-4 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col">
       <div className="w-full flex justify-end">
         <span className="text-gray-500 text-sm mr-1 mt-2">
-          *평균 : {bloodCountAvgInPeriod}회
+          *주간 사용자 평균 : {bloodCountAvgInPeriod}회
         </span>
       </div>
       <div className="flex justify-center items-end pb-12 w-full h-full">
