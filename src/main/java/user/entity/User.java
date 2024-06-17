@@ -34,6 +34,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BloodSugarsVer2> bloodSugarsVer2; //걸음수 목록
 
+    public void updateTotalPoints() {
+        this.totalPoints = points.stream().mapToInt(Point::getPointsEarned).sum();
+    }
+
     @Builder
     public User(String empId, String password) {
         this.empId = empId;
