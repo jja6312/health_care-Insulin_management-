@@ -1,0 +1,15 @@
+@keyframes superKori {
+  0% {
+    transform: translate(-40%, -100%);
+  }
+  50% {
+    transform: translate(-40%, -110%);
+  }
+  100% {
+    transform: translate(-40%, -100%);
+  }
+}
+
+.superKori {
+  animation: superKori 1.5s ease-in-out infinite;
+}

@@ -1,8 +1,10 @@
 import React from "react";
+import superKori from "../../../assets/superKori.png";
+import "../../../css/main/bloodSugarVer2/superKori.css";
 
 const BloodProgressKori = () => {
   return (
-    <div className="w-full border-4 border-gray-300 dark:border-[#202A33] h-44 my-4 flex flex-col">
+    <div className="w-full border-4 border-gray-100 dark:border-[#202A33] h-44 my-4 flex flex-col">
       <div className="w-full flex justify-end">
         <span className="text-gray-500 text-sm mr-4 mt-2">*평균 : xxx</span>
       </div>
@@ -13,7 +15,12 @@ const BloodProgressKori = () => {
             className="absolute w-5 rounded-full bg-gray-400 dark:bg-[#425769] h-5 transform -translate-x-1/2 -translate-y-1/3"
             style={{ left: "0%" }}
           ></div>
-
+          <img
+            src={superKori}
+            alt="superKori"
+            className="superKori absolute w-14 h-14 top-1/2 left-1/2"
+            style={{ left: "0%" }}
+          />
           {/* 1 */}
           <div
             className="absolute w-4 h-4 rounded-full bg-gray-400 dark:bg-[#425769] transform -translate-x-1/2 -translate-y-1/4"
