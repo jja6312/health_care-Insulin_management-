@@ -26,12 +26,12 @@ const BloodProgressKori = () => {
       setBloodCountAvgInPeriod(bloodCountAvgInPeriod);
     };
     fetchBloodCountAvgInPeriod();
-  }, [selectedPeriod]);
+  }, [selectedPeriod, setBloodCountAvgInPeriod]);
 
   return (
     <div className="w-full border-4 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col">
       <div className="w-full flex justify-end">
-        <span className="text-gray-500 text-sm mr-4 mt-2">
+        <span className="text-gray-500 text-sm mr-1 mt-2">
           *평균 : {bloodCountAvgInPeriod}회
         </span>
       </div>
@@ -156,7 +156,7 @@ const BloodProgressKori = () => {
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
             text-black dark:text-white gap-[1px] font-semibold"
             >
-              <span className="">우수 7회</span>
+              <span className="mr-1">우수 7회</span>
             </div>
           </div>
           {bloodSugarVer2InPeriod.length === 7 && (
