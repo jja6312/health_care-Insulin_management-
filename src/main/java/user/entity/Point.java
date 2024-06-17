@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @NoArgsConstructor
+//@EntityListeners(PointListener.class)
 public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
