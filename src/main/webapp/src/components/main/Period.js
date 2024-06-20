@@ -7,7 +7,7 @@ import { usePeriodStore } from "../../store/usePeriodStore";
 
 const Period = () => {
   const { setUserInfoDTO } = useUserInfoStore();
-  const { periods, setPeriods, selectedPeriod, setSelectedPeriod } =
+  const { startDate, periods, setPeriods, selectedPeriod, setSelectedPeriod } =
     usePeriodStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,8 +16,7 @@ const Period = () => {
       const userInfo = await getUserInfo();
       setUserInfoDTO(userInfo);
       console.log("userInfo", userInfo);
-
-      const startDate = new Date(2024, 4, 20); // 시작일
+      console.log("startDate", startDate);
       const calculatedPeriods = getWeeklyPeriods(startDate);
       setPeriods(calculatedPeriods);
       console.log("periods", calculatedPeriods);
@@ -70,13 +69,20 @@ const Period = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Select Period"
-        className="modal dark:bg-dark dark:text-white h-64 overflow-y-scroll"
+        className="modal dark:bg-dark dark:text-white h-64 overflow-y-scroll mt-[4%]"
         overlayClassName="overlay"
       >
         <div className="flex flex-col justify-center">
-          <div className="flex justify-center -translate-y-2">
+          <div className="relative flex w-full justify-center -translate-y-2">
             <span>기간 선택</span>
+            <span
+              className="absolute right-2 dark:text-white"
+              onClick={() => setIsModalOpen(false)}
+            >
+              x
+            </span>
           </div>
+
           {periods.map((period) => (
             <React.Fragment key={period.week}>
               <div className="flex justify-center">

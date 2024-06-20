@@ -2,6 +2,8 @@ import { create } from "zustand";
 
 export const usePointStore = create((set) => ({
   texts: [],
+  weeklyEarnedPoints: [],
+
   setTexts: (update) => {
     set((state) => {
       const newTexts =
@@ -10,4 +12,5 @@ export const usePointStore = create((set) => ({
       return { texts: newTexts };
     });
   },
+  setWeeklyEarnedPoints: (data) => set({ weeklyEarnedPoints: data }),
 }));
