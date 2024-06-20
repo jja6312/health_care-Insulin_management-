@@ -50,7 +50,7 @@ public class PointService {
                     .sum();
 
             WeeklyEarnedPointsDTO weeklyEarnedPointsDTO = new WeeklyEarnedPointsDTO();
-            weeklyEarnedPointsDTO.setWeek((week + 1) + "주차");
+            weeklyEarnedPointsDTO.setWeek(week + 1);
             weeklyEarnedPointsDTO.setPoint(weekPoints);
             weeklyEarnedPointsDTO.setStartPeriod(weekStartDate);
             weeklyEarnedPointsDTO.setEndPeriod(weekEndDate.minusDays(1)); // endPeriod는 주의 마지막 날을 의미
