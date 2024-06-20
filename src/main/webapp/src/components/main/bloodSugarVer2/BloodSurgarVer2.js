@@ -80,7 +80,11 @@ const BloodSurgarVer2 = () => {
       <div className="flex justify-center">
         <div className="flex items-center text-[22px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
-            className="text-nhgreen"
+            className={`${
+              bloodSugarVer2InPeriod.length >= 3
+                ? "text-green-500"
+                : "text-orange-400"
+            }`}
             // {isNormal ? "text-nhgreen" : "text-orange-400"}
 
             size="lg"
@@ -89,7 +93,11 @@ const BloodSurgarVer2 = () => {
           <div>
             <span className="dark:text-white ml-3">이번주 </span>
             <span
-              className="text-nhgreen"
+              className={`${
+                bloodSugarVer2InPeriod.length >= 3
+                  ? "dark:text-green-300 text-green-500"
+                  : "text-orange-400"
+              }`}
               // {isNormal ? "text-nhgreen" : "text-orange-400"}
             >
               {/* {averageBloodSugar !== null
@@ -113,16 +121,24 @@ const BloodSurgarVer2 = () => {
           <span className="text-gray-500">{userInfoDTO.empId}님,</span>
           <span
             className={` ml-2 
-          dark:text-green-300 text-green-500
+          ${
+            bloodSugarVer2InPeriod.length >= 3
+              ? "dark:text-green-300 text-green-500"
+              : "text-orange-400"
+          }
           `}
           >
             {bloodSugarVer2InPeriod.length >= 7
               ? "우수 7회 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length >= 5
               ? "권장 5회 혈당체크를 달성했어요"
-              : bloodSugarVer2InPeriod.length >= 3
+              : bloodSugarVer2InPeriod.length === 3
               ? "최소 3회 혈당체크를 달성했어요"
-              : "혈당체크로 함께 건강해져요"}
+              : bloodSugarVer2InPeriod.length === 2
+              ? "혈당을 2회 측정했어요"
+              : bloodSugarVer2InPeriod.length === 1
+              ? "혈당을 1회 측정했어요"
+              : "혈당을 아직 측정하지 않았어요"}
           </span>
           {/* <span
             className={` ml-2 
