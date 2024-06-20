@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUserInfoStore } from "../../../store/useUserInfoStore";
 import useBloodSugarsVer2 from "../../../store/useBloodSugarsVer2"; // 수정된 경로에 따라 변경
 
@@ -7,6 +7,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { usePeriodStore } from "../../../store/usePeriodStore";
 import ChartBloodSugarVer2 from "./ChartBloodSugarVer2";
 import BloodProgressKori from "./BloodProgressKori";
+import WarningMessage from "./WarningMessage";
 
 const BloodSurgarVer2 = () => {
   const { userInfoDTO } = useUserInfoStore();
@@ -19,8 +20,10 @@ const BloodSurgarVer2 = () => {
   } = useBloodSugarsVer2();
   const { selectedPeriod } = usePeriodStore(); // 수정된 경로에 따라 변경
 
+  const [showWarning, setShowWarning] = useState(false); //WarningMessage 표시 여부를 관리하는 상태
+
   useEffect(() => {
-    if (userInfoDTO && userInfoDTO.bloodSugarsVer2) {
+    if (userInfoDTO && userInfoDTO.bloodSugarsVer2 && selectedPeriod) {
       const endOfDay = new Date(selectedPeriod.end);
       endOfDay.setHours(23, 59, 59, 999);
 
@@ -40,15 +43,38 @@ const BloodSurgarVer2 = () => {
       );
       setBloodSugarVer2InPeriod(bloodSugarVer2InPeriod);
       console.log("bloodSugarVer2InPeriod", bloodSugarVer2InPeriod);
+
+      // 추가: 오늘이 목요일 이후인지 확인하고, 해당 주차에 대해 WarningMessage를 표시할지 결정
+      const today = new Date();
+      const dayOfWeek = today.getDay(); // 0: Sunday, 1: Monday, ..., 6: Saturday
+
+      if (
+        selectedPeriod.start <= today &&
+        selectedPeriod.end >= today &&
+        dayOfWeek >= 4
+      ) {
+        const weekKey = `hideWarning_week_${selectedPeriod.week}`;
+        if (!localStorage.getItem(weekKey)) {
+          setShowWarning(true);
+        }
+      }
     }
   }, [userInfoDTO, selectedPeriod, calculateAverageBloodSugar]);
 
-  if (!userInfoDTO) {
+  // 추가: '확인' 버튼 클릭 핸들러
+  const handleConfirm = () => {
+    const weekKey = `hideWarning_week_${selectedPeriod.week}`;
+    localStorage.setItem(weekKey, true);
+    setShowWarning(false);
+  };
+
+  if (!userInfoDTO || !selectedPeriod) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="relative flex flex-col justify-center items-center mt-5 pt-5">
+      {showWarning && <WarningMessage onConfirm={handleConfirm} />}
       <div className="flex justify-center">
         <div className="flex items-center text-[22px] sm:text-[27px] font-semibold">
           <FontAwesomeIcon
