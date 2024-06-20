@@ -93,12 +93,15 @@ const Popup = () => {
         </div>
       </div>
       <div className="flex justify-end w-11/12 ">
-        <span
-          className="text-white cursor-pointer"
-          onClick={handleDoNotShowToday}
+        <div className="cursor-pointer mr-2" onClick={handleDoNotShowToday}>
+          <span className="text-white">오늘 하루 보지 않기</span>
+        </div>
+        <div
+          className="bg-red-500 px-2 cursor-pointer"
+          onClick={() => setOpenPopup(false)}
         >
-          오늘 하루 보지 않기
-        </span>
+          <span className="text-white">close</span>
+        </div>
       </div>
     </div>
   );
