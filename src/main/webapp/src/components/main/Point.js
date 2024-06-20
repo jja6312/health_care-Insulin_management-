@@ -70,7 +70,7 @@ const Point = ({ onKoriClick }) => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Select Period"
-        className="modal dark:bg-dark dark:text-white h-[92%] overflow-y-scroll mt-[52%]"
+        className="modal dark:bg-dark dark:text-white h-[85vh] overflow-y-scroll mt-[48%]"
         overlayClassName="overlay"
       >
         <div className="flex flex-col justify-center">
@@ -95,12 +95,12 @@ const Point = ({ onKoriClick }) => {
               ?.filter((point) => point.point !== 0)
               .reverse()
               .map((point) => (
-                <tr key={point.id} className="">
-                  <td className="p-2 text-sm">
+                <tr key={point.id} className="h-8">
+                  <td className="text-sm">
                     ({point.week}) {formatDate(new Date(point.startPeriod))}~
                     {formatDate(new Date(point.endPeriod))}
                   </td>
-                  <td className="p-2">
+                  <td>
                     {point.point}
                     <span className="ml-1 text-[#55aed4] dark:text-[#AEDDE8]">
                       코리
