@@ -64,7 +64,9 @@ const Steps = () => {
         0
       );
       const averageSteps =
-        stepsInPeriod.length > 0 ? totalSteps / stepsInPeriod.length : 0;
+        stepsInPeriod.length > 0
+          ? Math.round(totalSteps / stepsInPeriod.length)
+          : 0;
 
       console.log("Total Steps:", totalSteps, "Average Steps:", averageSteps);
       setAverageSteps(averageSteps);
