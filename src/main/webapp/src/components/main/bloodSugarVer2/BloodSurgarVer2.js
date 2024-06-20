@@ -51,7 +51,9 @@ const BloodSurgarVer2 = () => {
       if (
         selectedPeriod.start <= today &&
         selectedPeriod.end >= today &&
-        dayOfWeek >= 4
+        dayOfWeek >= 4 &&
+        //혈당 데이터가 3회 미만인경우
+        bloodSugarVer2InPeriod.length < 3
       ) {
         const weekKey = `hideWarning_week_${selectedPeriod.week}`;
         if (!localStorage.getItem(weekKey)) {
