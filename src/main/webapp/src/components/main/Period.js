@@ -11,6 +11,30 @@ const Period = () => {
     usePeriodStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // useEffect(() => {
+  //   const fetchAndCalculatePeriods = async () => {
+  //     const userInfo = await getUserInfo();
+  //     setUserInfoDTO(userInfo);
+  //     console.log("userInfo", userInfo);
+  //     console.log("startDate", startDate);
+  //     const calculatedPeriods = getWeeklyPeriods(startDate);
+  //     setPeriods(calculatedPeriods);
+  //     console.log("periods", calculatedPeriods);
+
+  //     const today = stripTime(new Date());
+  //     console.log("today", today);
+
+  //     const currentPeriod = calculatedPeriods.find((period) => {
+  //       const periodStart = stripTime(period.start);
+  //       const periodEnd = stripTime(period.end);
+  //       return today >= periodStart && today <= periodEnd;
+  //     });
+
+  //     console.log("currentPeriod", currentPeriod);
+  //     setSelectedPeriod(currentPeriod);
+  //   };
+  //   fetchAndCalculatePeriods();
+  // }, [setUserInfoDTO, setPeriods, setSelectedPeriod]);
   useEffect(() => {
     const fetchAndCalculatePeriods = async () => {
       const userInfo = await getUserInfo();
@@ -24,17 +48,28 @@ const Period = () => {
       const today = stripTime(new Date());
       console.log("today", today);
 
+      const isThursdayOrLater = today.getDay() >= 4; // 4는 목요일
+
       const currentPeriod = calculatedPeriods.find((period) => {
         const periodStart = stripTime(period.start);
         const periodEnd = stripTime(period.end);
         return today >= periodStart && today <= periodEnd;
       });
 
+      const previousPeriodIndex = calculatedPeriods.indexOf(currentPeriod) - 1;
+      const previousPeriod = calculatedPeriods[previousPeriodIndex];
+
       console.log("currentPeriod", currentPeriod);
-      setSelectedPeriod(currentPeriod);
+      console.log("previousPeriod", previousPeriod);
+
+      if (isThursdayOrLater) {
+        setSelectedPeriod(currentPeriod);
+      } else {
+        setSelectedPeriod(previousPeriod);
+      }
     };
     fetchAndCalculatePeriods();
-  }, [setUserInfoDTO, setPeriods, setSelectedPeriod]);
+  }, [setUserInfoDTO, setPeriods, setSelectedPeriod, startDate]);
 
   const handlePeriodSelect = (period) => {
     if (period.start > new Date()) {

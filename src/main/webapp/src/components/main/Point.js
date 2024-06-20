@@ -8,11 +8,14 @@ import Modal from "react-modal";
 import { usePeriodStore } from "../../store/usePeriodStore";
 import { getWeeklyEarnedPoints } from "../../api/point/getWeeklyEarnedPoint";
 import { formatDate } from "../../utils/dateUtils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Point = ({ onKoriClick }) => {
   const { userInfoDTO } = useUserInfoStore();
   const { texts, weeklyEarnedPoints, setWeeklyEarnedPoints } = usePointStore();
-  const { startDate } = usePeriodStore();
+  const [weeklyEarnedPoint, setWeeklyEarnedPoint] = useState(0);
+  const { startDate, selectedPeriod } = usePeriodStore();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,10 +29,41 @@ const Point = ({ onKoriClick }) => {
     fetchPoints();
   }, []);
 
+  useEffect(() => {
+    setWeeklyEarnedPoint(
+      numberFormat(
+        weeklyEarnedPoints.filter(
+          (data) => data?.week === selectedPeriod?.week
+        )[0]?.point
+      )
+    );
+  }, [selectedPeriod, weeklyEarnedPoints]);
+
   return (
     // grid로 1:2:2:2:1 배치
     <div className="flex flex-col justify-center items-end">
-      <div className="gap-1 md:gap-4 mt-5 w-full flex justify-center items-center relative">
+      {/* 상단 */}
+      <div className="flex justify-center w-full mt-5 ">
+        <div className="flex items-center text-[20px] sm:text-[27px] font-semibold">
+          <FontAwesomeIcon
+            className={
+              weeklyEarnedPoint != 0 ? "text-nhgreen" : "text-orange-400"
+            }
+            size="lg"
+            icon={faCircleCheck}
+          />
+          <span className="dark:text-white ml-3">이번주</span>
+          <span
+            className={`ml-2
+            ${weeklyEarnedPoint != 0 ? "text-nhgreen" : "text-orange-400"}`}
+          >
+            {weeklyEarnedPoint}
+          </span>
+          <span className="dark:text-white">코리 모았어요</span>
+        </div>
+      </div>
+
+      <div className="gap-1 md:gap-4 w-full flex justify-center items-center relative mt-3">
         {Array.isArray(texts) &&
           texts.map((item) => (
             <span
@@ -60,7 +94,7 @@ const Point = ({ onKoriClick }) => {
       </div>
       <div>
         <span
-          className="dark:text-gray-400 mr-14 curosr-pointer"
+          className="text-gray-600 underline mr-14 curosr-pointer"
           onClick={() => setIsModalOpen(true)}
         >
           적립 내역 보기
