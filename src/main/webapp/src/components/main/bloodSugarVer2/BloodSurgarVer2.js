@@ -132,7 +132,7 @@ const BloodSurgarVer2 = () => {
               ? "우수 7회 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length >= 5
               ? "권장 5회 혈당체크를 달성했어요"
-              : bloodSugarVer2InPeriod.length === 3
+              : bloodSugarVer2InPeriod.length >= 3
               ? "최소 3회 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length === 2
               ? "혈당을 2회 측정했어요"
