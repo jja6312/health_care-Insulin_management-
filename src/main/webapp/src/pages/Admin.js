@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { createEvent } from "../api/event/createEvent";
 
 const Admin = () => {
@@ -7,6 +7,8 @@ const Admin = () => {
     content: "",
     image: "",
   });
+
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,21 +36,29 @@ const Admin = () => {
       await createEvent(eventDTO);
       console.log("이벤트 등록 성공");
       alert("이벤트 등록 성공");
-      //dto리셋
+      // dto 리셋
       setEventDTO({
         title: "",
         content: "",
         image: "",
       });
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } catch (error) {
       console.error("이벤트 등록에 문제가 있습니다.", error);
     }
   };
 
+  useEffect(() => {
+    console.log("eventDTO", eventDTO);
+  }, [eventDTO]);
+
   return (
     <div className="flex flex-col justify-center items-center mt-10">
       <input
         className="border-2 border-black w-10/12"
+        value={eventDTO.title}
         onChange={handleChange}
         type="text"
         placeholder="제목"
@@ -56,11 +66,17 @@ const Admin = () => {
       />
       <textarea
         className="border-2 border-black w-10/12"
+        value={eventDTO.content}
         onChange={handleChange}
         placeholder="내용"
         name="content"
       />
-      <input onChange={handleImageChange} type="file" name="image" />
+      <input
+        ref={fileInputRef}
+        onChange={handleImageChange}
+        type="file"
+        name="image"
+      />
       <button className="bg-blue-400 rounded-xl w-10/12" onClick={handleSubmit}>
         등록
       </button>

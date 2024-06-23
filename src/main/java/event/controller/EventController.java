@@ -31,4 +31,10 @@ public class EventController {
         return eventService.getNotices();
     }
 
+    @PostMapping("/events/{eventId}/read")
+    public ResponseEntity<Void> markEventAsRead(@RequestParam Long userId, @PathVariable Long eventId) {
+        eventService.markEventAsRead(userId, eventId);
+        return ResponseEntity.ok().build();
+    }
+
 }

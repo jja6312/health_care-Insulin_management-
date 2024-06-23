@@ -1,22 +1,25 @@
 package event.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
+    private LocalDateTime createdAt;
+
 
     @Enumerated(EnumType.STRING)
     private EventType eventType;
@@ -25,4 +28,17 @@ public class Event {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String image;
 
+
+    @ElementCollection
+    @CollectionTable(name = "event_read_users", joinColumns = @JoinColumn(name = "event_id"))
+    @Column(name = "emp_id")
+    private Set<String> readByUsers = new HashSet<>();
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+    public void markAsRead(String empId) {
+        readByUsers.add(empId);
+    }
 }
