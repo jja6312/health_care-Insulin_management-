@@ -6,6 +6,7 @@ import "./index.css";
 import Main from "./pages/Main";
 import useDarkMode from "./utils/darkMode/useDarkMode";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from "./pages/Admin";
 
 function App() {
   useDarkMode();
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<ProtectedRoute element={<Main />} />} />
       <Route path="/login" element={<Login />} />
       <Route path="/error" element={<ErrorPage />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }
