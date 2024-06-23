@@ -1,0 +1,38 @@
+.screen {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mainScreen {
+  transform: translateX(0);
+}
+
+.secondScreen {
+  opacity: 0;
+  transform: translateX(100%);
+  visibility: hidden;
+}
+
+.secondScreen.slideInRight {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.secondScreen.slideOutLeft {
+  opacity: 0;
+  transform: translateX(100%);
+  visibility: hidden;
+}
+
+.mainScreen.slideInRight {
+  transform: translateX(0);
+}
+
+.mainScreen.slideOutLeft {
+  transform: translateX(-100%);
+}
