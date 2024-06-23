@@ -13,6 +13,7 @@ import { usePopupStore } from "../store/usePopupStore";
 import Popup from "../components/main/popup/Popup";
 
 import "../css/main/Main.css";
+import SecondScreen from "../components/main/secondScreen/SecondScreen";
 
 Modal.setAppElement("#root");
 
@@ -54,7 +55,7 @@ const Main = () => {
           showSecondScreen ? "slideInRight" : "hidden"
         }`}
       >
-        ddd
+        <SecondScreen />
       </div>
     </div>
   );

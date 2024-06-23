@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -17,6 +19,16 @@ public class EventController {
     public ResponseEntity<Event> createEvent(@RequestBody EventDTO eventDTO){
         Event event = eventService.createEvent(eventDTO);
         return ResponseEntity.ok(event);
+    }
+
+    @GetMapping("/getEvents")
+    public List<Event> getEvents(){
+        return eventService.getEvents();
+    }
+
+    @GetMapping("/getNotices")
+    public List<Event> getNotices(){
+        return eventService.getNotices();
     }
 
 }

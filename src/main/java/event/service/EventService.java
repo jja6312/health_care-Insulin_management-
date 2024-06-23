@@ -7,6 +7,8 @@ import event.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EventService {
@@ -20,5 +22,13 @@ public class EventService {
                 .eventType(EventType.EVENT)
                 .build();
         return eventRepository.save(event);
+    }
+
+    public List<Event> getEvents() {
+        return eventRepository.findByEventType(EventType.EVENT);
+    }
+
+    public List<Event> getNotices() {
+        return eventRepository.findByEventType(EventType.NOTICE);
     }
 }

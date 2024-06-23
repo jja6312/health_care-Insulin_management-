@@ -33,6 +33,13 @@ const Admin = () => {
     try {
       await createEvent(eventDTO);
       console.log("이벤트 등록 성공");
+      alert("이벤트 등록 성공");
+      //dto리셋
+      setEventDTO({
+        title: "",
+        content: "",
+        image: "",
+      });
     } catch (error) {
       console.error("이벤트 등록에 문제가 있습니다.", error);
     }
