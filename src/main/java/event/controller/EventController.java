@@ -2,6 +2,7 @@ package event.controller;
 
 import event.dto.EventDTO;
 import event.dto.EventIdAsReadDTO;
+import event.dto.NoticeDTO;
 import event.entity.Event;
 import event.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +27,12 @@ public class EventController {
     public ResponseEntity<Event> createEvent(@RequestBody EventDTO eventDTO){
         Event event = eventService.createEvent(eventDTO);
         return ResponseEntity.ok(event);
+    }
+
+    @PostMapping("/createNotice")
+    public ResponseEntity<Event> createNotice(@RequestBody NoticeDTO noticeDTO){
+        Event notice = eventService.createNotice(noticeDTO);
+        return ResponseEntity.ok(notice);
     }
 
     @GetMapping("/getEvents")

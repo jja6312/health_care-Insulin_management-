@@ -2,6 +2,7 @@ package event.service;
 
 import event.dto.EventDTO;
 import event.dto.EventIdAsReadDTO;
+import event.dto.NoticeDTO;
 import event.entity.Event;
 import event.entity.EventType;
 import event.repository.EventRepository;
@@ -25,6 +26,16 @@ public class EventService {
                 .content(eventDTO.getContent())
                 .image(eventDTO.getImage())
                 .eventType(EventType.EVENT)
+                .build();
+        return eventRepository.save(event);
+    }
+
+    public Event createNotice(NoticeDTO noticeDTO) {
+        Event event = Event.builder()
+                .title(noticeDTO.getTitle())
+                .content(noticeDTO.getContent())
+                .eventType(EventType.NOTICE)
+                .empId(noticeDTO.getEmpId())
                 .build();
         return eventRepository.save(event);
     }
@@ -53,4 +64,6 @@ public class EventService {
                 .map(event -> new EventIdAsReadDTO(event.getId()))
                 .collect(Collectors.toList());
     }
+
+
 }

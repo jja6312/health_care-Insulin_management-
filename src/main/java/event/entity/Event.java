@@ -19,6 +19,7 @@ public class Event {
     private String title;
     private String content;
     private LocalDateTime createdAt;
+    private String empId;
 
 
     @Enumerated(EnumType.STRING)
