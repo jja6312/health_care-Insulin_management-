@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createEvent } from "../api/event/createEvent";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [eventDTO, setEventDTO] = useState({
@@ -80,6 +81,11 @@ const Admin = () => {
       <button className="bg-blue-400 rounded-xl w-10/12" onClick={handleSubmit}>
         등록
       </button>
+      <Link to="/admin2">
+        <span className="text-blue-500 underline">
+          비정기메시지 보내기로 이동
+        </span>
+      </Link>
     </div>
   );
 };
