@@ -10,7 +10,7 @@ const Header = ({ handleIconClick }) => {
   return (
     <div className="w-full flex justify-end items-center  my-2 text-[12px]">
       <FontAwesomeIcon
-        className="mr-3 text-gray-600 cursor-pointer hover:opacity-80"
+        className="text-xl mr-3 text-gray-600 cursor-pointer hover:opacity-80"
         onClick={handleIconClick}
         icon={faBell}
       />

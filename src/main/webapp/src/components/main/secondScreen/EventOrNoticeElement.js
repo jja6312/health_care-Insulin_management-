@@ -2,7 +2,7 @@ import React from "react";
 
 const EventOrNoticeElement = ({ key, event }) => {
   return (
-    <div className="w-10/12 h-10 flex justify-between items-start">
+    <div className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100">
       <div className="w-14 h-full flex justify-center items-center">
         <span>{event.eventType === "EVENT" ? "📢" : "✅"}</span>
       </div>

@@ -32,14 +32,16 @@ const SecondScreen = () => {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center dark:text-white gap-6">
+    <div className="flex flex-col justify-center items-center dark:text-white ">
       <div>
         <span className="text-[27px] text-nhgreen font-extrabold">
           알림/공지사항
         </span>
       </div>
       <div className="w-10/12 flex justify-end">
-        <span>알림 전체 확인</span>
+        <span className="underline text-gray-500 cursor-pointer my-3">
+          알림 전체 확인
+        </span>
       </div>
       {sortedEventList?.map((event) => (
         <EventOrNoticeElement key={event.id} event={event} />

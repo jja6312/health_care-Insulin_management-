@@ -1,10 +1,20 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
 .screen {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   position: absolute;
-  top: 40px;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   opacity: 1;
-  visibility: visible;
 }
 
 .mainScreen {
@@ -12,27 +22,26 @@
 }
 
 .secondScreen {
-  opacity: 0;
   transform: translateX(100%);
-  visibility: hidden;
+  opacity: 0;
 }
 
 .secondScreen.slideInRight {
-  opacity: 1;
   transform: translateX(0);
-  visibility: visible;
+  opacity: 1;
 }
 
 .secondScreen.slideOutLeft {
-  opacity: 0;
   transform: translateX(100%);
-  visibility: hidden;
+  opacity: 0;
 }
 
 .mainScreen.slideInRight {
   transform: translateX(0);
+  opacity: 1;
 }
 
 .mainScreen.slideOutLeft {
   transform: translateX(-100%);
+  opacity: 0;
 }

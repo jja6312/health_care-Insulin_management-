@@ -28,15 +28,15 @@ const Main = () => {
 
   return (
     <div
-      className="dark:bg-dark min-h-screen flex flex-col py-1 "
+      className="dark:bg-dark min-h-screen flex flex-col py-1 relative"
       onClick={() => handleKoriClick(setTexts, textArray)}
     >
       <Header handleIconClick={handleIconClick} />
 
       {openPopup && <Popup />}
       <div
-        className={` dark:bg-dark screen mainScreen ${
-          showSecondScreen ? "slideOutLeft" : ""
+        className={`dark:bg-dark screen mainScreen mt-10 ${
+          showSecondScreen ? "slideOutLeft" : "slideInRight"
         }`}
       >
         <div className="flex justify-center mt-1 gap-2">
@@ -51,8 +51,8 @@ const Main = () => {
         <BloodSurgarVer2 />
       </div>
       <div
-        className={`screen secondScreen ${
-          showSecondScreen ? "slideInRight" : "hidden"
+        className={`screen secondScreen  mt-10 ${
+          showSecondScreen ? "slideInRight" : "slideOutLeft"
         }`}
       >
         <SecondScreen />
