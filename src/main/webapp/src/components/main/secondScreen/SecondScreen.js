@@ -6,9 +6,14 @@ import EventOrNoticeElement from "./EventOrNoticeElement";
 import { useEventStore } from "../../../store/useEventStore";
 
 const SecondScreen = () => {
-  const [eventList, setEventList] = useState([]);
-  const [noticeList, setNoticeList] = useState([]);
-  const { selectedEvent, setReadList } = useEventStore();
+  const {
+    selectedEvent,
+    setReadList,
+    eventList,
+    setEventList,
+    noticeList,
+    setNoticeList,
+  } = useEventStore();
 
   useEffect(() => {
     const fetchEventsAndNotices = async () => {
