@@ -30,7 +30,8 @@ const Main = () => {
   };
   useEffect(() => {
     const darkMode = localStorage.getItem("darkMode");
-    if (darkMode === "dark") {
+    const darkMode2 = localStorage.getItem("theme");
+    if (darkMode === "dark" || darkMode2 === "dark") {
       document.body.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
