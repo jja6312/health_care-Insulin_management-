@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useEventStore } from "../../../store/useEventStore";
 
-const EventOrNoticeElement = ({ key, event }) => {
+const EventOrNoticeElement = ({ event }) => {
+  const { setSelectedEvent, setIsEventModalOpen } = useEventStore();
+
+  const handleImageClick = () => {
+    setIsEventModalOpen(true);
+    setSelectedEvent(event);
+  };
+
   return (
-    <div className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100">
+    <div
+      className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100"
+      onClick={handleImageClick}
+    >
       <div className="w-14 h-full flex justify-center items-center">
         <span>{event.eventType === "EVENT" ? "📢" : "✅"}</span>
       </div>

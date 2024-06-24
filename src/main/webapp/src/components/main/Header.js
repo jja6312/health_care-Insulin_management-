@@ -3,8 +3,9 @@ import { useUserInfoStore } from "../../store/useUserInfoStore";
 import handleLogout from "../../utils/login/handleLogout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ handleIconClick }) => {
+const Header = ({ handleIconClick, showSecondScreen }) => {
   const { userInfoDTO } = useUserInfoStore();
 
   return (
@@ -12,7 +13,7 @@ const Header = ({ handleIconClick }) => {
       <FontAwesomeIcon
         className="text-xl mr-3 text-gray-600 cursor-pointer hover:opacity-80"
         onClick={handleIconClick}
-        icon={faBell}
+        icon={showSecondScreen ? faHouse : faBell}
       />
       <span className=" text-gray-600 ">{userInfoDTO?.empId} 님</span>
       <span className=" mx-3 text-gray-600"> | </span>

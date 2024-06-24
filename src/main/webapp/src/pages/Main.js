@@ -14,6 +14,8 @@ import Popup from "../components/main/popup/Popup";
 
 import "../css/main/Main.css";
 import SecondScreen from "../components/main/secondScreen/SecondScreen";
+import { useEventStore } from "../store/useEventStore";
+import EventModal from "../components/main/secondScreen/modal/EventModal";
 
 Modal.setAppElement("#root");
 
@@ -21,6 +23,7 @@ const Main = () => {
   const { setTexts } = usePointStore();
   const { openPopup } = usePopupStore();
   const [showSecondScreen, setShowSecondScreen] = useState(false);
+  const { isEventModalOpen } = useEventStore();
 
   const handleIconClick = () => {
     setShowSecondScreen(!showSecondScreen);
@@ -31,7 +34,10 @@ const Main = () => {
       className="dark:bg-dark min-h-screen flex flex-col py-1 relative"
       onClick={() => handleKoriClick(setTexts, textArray)}
     >
-      <Header handleIconClick={handleIconClick} />
+      <Header
+        handleIconClick={handleIconClick}
+        showSecondScreen={showSecondScreen}
+      />
 
       {openPopup && <Popup />}
       <div
@@ -57,6 +63,7 @@ const Main = () => {
       >
         <SecondScreen />
       </div>
+      {isEventModalOpen && <EventModal />}
     </div>
   );
 };
