@@ -40,6 +40,10 @@ const SecondScreen = () => {
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
+  const sortedNoticeList = noticeList.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   return (
     <div className="flex flex-col justify-center items-center dark:text-white ">
       <div>
@@ -52,6 +56,10 @@ const SecondScreen = () => {
           알림 전체 확인
         </span>
       </div> */}
+      {sortedNoticeList?.map((notice) => (
+        <EventOrNoticeElement key={notice.id} event={notice} />
+      ))}
+
       {sortedEventList?.map((event) => (
         <EventOrNoticeElement key={event.id} event={event} />
       ))}

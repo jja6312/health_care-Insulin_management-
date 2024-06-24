@@ -39,7 +39,9 @@ const EventOrNoticeElement = ({ event }) => {
         <span>{event.createdAt.split("T")[0].split("2024-")[1]}</span>
       </div>
       {/* base64 이미지 불러오기 */}
-      <img className="w-10 h-10" src={`${event.image}`} alt="event" />
+      {event.eventType === "EVENT" && (
+        <img className="w-10 h-10" src={`${event.image}`} alt="event" />
+      )}
     </div>
   );
 };
