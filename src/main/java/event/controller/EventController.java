@@ -41,8 +41,9 @@ public class EventController {
     }
 
     @GetMapping("/getNotices")
-    public List<Event> getNotices(){
-        return eventService.getNotices();
+    public List<Event> getNotices(@AuthenticationPrincipal UserDetails userDetails){
+        String empId = userDetails.getUsername();
+        return eventService.getNotices(empId);
     }
 
     @PostMapping("/events/{eventId}/read")

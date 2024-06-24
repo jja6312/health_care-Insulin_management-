@@ -9,4 +9,6 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event,Long> {
 
     List<Event> findByEventType(EventType eventType);
+
+    List<Event> findByEventTypeAndEmpId(EventType eventType, String empId);
 }

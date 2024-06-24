@@ -44,8 +44,8 @@ public class EventService {
         return eventRepository.findByEventType(EventType.EVENT);
     }
 
-    public List<Event> getNotices() {
-        return eventRepository.findByEventType(EventType.NOTICE);
+    public List<Event> getNotices(String empId) {
+        return eventRepository.findByEventTypeAndEmpId(EventType.NOTICE, empId);
     }
 
     public void markEventAsRead(String empId, Long eventId) {
