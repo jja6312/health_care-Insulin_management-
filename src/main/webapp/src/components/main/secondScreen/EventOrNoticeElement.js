@@ -1,17 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { useEventStore } from "../../../store/useEventStore";
+import { markEventAsRead } from "../../../api/event/markEventAsRead";
 
 const EventOrNoticeElement = ({ event }) => {
   const { setSelectedEvent, setIsEventModalOpen } = useEventStore();
 
-  const handleImageClick = () => {
+  const handleImageClick = async () => {
     setIsEventModalOpen(true);
     setSelectedEvent(event);
+    try {
+      const response = await markEventAsRead(event.id);
+      console.log("markEventAsRead읽기", response.data);
+    } catch (error) {
+      console.error("이벤트 읽기 처리 중 에러 발생", error);
+    }
   };
 
   return (
     <div
-      className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100 dark:bg-gray-700"
+      className={`w-full px-[8.333%] py-5 flex justify-between items-start 
+      bg-green-100 dark:bg-gray-700`}
       onClick={handleImageClick}
     >
       <div className="w-14 h-full flex justify-center items-center">

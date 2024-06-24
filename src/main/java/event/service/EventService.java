@@ -35,14 +35,13 @@ public class EventService {
         return eventRepository.findByEventType(EventType.NOTICE);
     }
 
-    public void markEventAsRead(Long userId, Long eventId) {
-        User user = userRepository.findById(userId)
+    public void markEventAsRead(String empId, Long eventId) {
+        User user = userRepository.findByEmpId(empId)
                 .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없음"));
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("이벤트를 찾을 수 없음"));
 
-        String empId = user.getEmpId();
-        event.markAsRead(empId);
+        event.markAsRead(user.getEmpId());
         eventRepository.save(event);
     }
 }
