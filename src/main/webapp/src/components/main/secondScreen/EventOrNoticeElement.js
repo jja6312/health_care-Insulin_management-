@@ -3,7 +3,7 @@ import { useEventStore } from "../../../store/useEventStore";
 import { markEventAsRead } from "../../../api/event/markEventAsRead";
 
 const EventOrNoticeElement = ({ event }) => {
-  const { setSelectedEvent, setIsEventModalOpen } = useEventStore();
+  const { readList, setSelectedEvent, setIsEventModalOpen } = useEventStore();
 
   const handleImageClick = async () => {
     setIsEventModalOpen(true);
@@ -19,7 +19,11 @@ const EventOrNoticeElement = ({ event }) => {
   return (
     <div
       className={`w-full px-[8.333%] py-5 flex justify-between items-start 
-      bg-green-100 dark:bg-gray-700`}
+      ${
+        readList.filter((read) => read.event_id === event.id).length > 0
+          ? ""
+          : "bg-green-100 dark:bg-gray-700"
+      }`}
       onClick={handleImageClick}
     >
       <div className="w-14 h-full flex justify-center items-center">

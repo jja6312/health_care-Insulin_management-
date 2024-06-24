@@ -1,6 +1,7 @@
 package event.service;
 
 import event.dto.EventDTO;
+import event.dto.EventIdAsReadDTO;
 import event.entity.Event;
 import event.entity.EventType;
 import event.repository.EventRepository;
@@ -10,6 +11,7 @@ import user.entity.User;
 import user.repository.UserRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +45,12 @@ public class EventService {
 
         event.markAsRead(user.getEmpId());
         eventRepository.save(event);
+    }
+
+    public List<EventIdAsReadDTO> getEventReadList(String empId) {
+        return eventRepository.findAll().stream()
+                .filter(event -> event.getReadByUsers().contains(empId))
+                .map(event -> new EventIdAsReadDTO(event.getId()))
+                .collect(Collectors.toList());
     }
 }

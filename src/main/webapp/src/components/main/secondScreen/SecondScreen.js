@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { getEvents } from "../../../api/event/getEvents";
 import { getNotices } from "../../../api/event/getNotices";
+import { getReadListByEmpId } from "../../../api/event/getReadListByEmpId";
 import EventOrNoticeElement from "./EventOrNoticeElement";
+import { useEventStore } from "../../../store/useEventStore";
 
 const SecondScreen = () => {
   const [eventList, setEventList] = useState([]);
   const [noticeList, setNoticeList] = useState([]);
+  const { selectedEvent, setReadList } = useEventStore();
 
   useEffect(() => {
     const fetchEventsAndNotices = async () => {
       try {
-        const events = await getEvents();
-        const notices = await getNotices();
-        setEventList(events);
-        setNoticeList(notices);
+        const eventListData = await getEvents();
+        const noticeListData = await getNotices();
+        const readListData = await getReadListByEmpId();
+        setEventList(eventListData);
+        setNoticeList(noticeListData);
+        setReadList(readListData);
+
+        console.log("eventList", eventListData);
+        console.log("noticeList", noticeListData);
+        console.log("readList", readListData);
       } catch (error) {
         console.error("Error fetching events and notices:", error);
       }
     };
 
     fetchEventsAndNotices();
-  }, []);
-
-  useEffect(() => {
-    console.log("eventList", eventList);
-    console.log("noticeList", noticeList);
-  }, [eventList, noticeList]);
+  }, [selectedEvent]);
 
   const sortedEventList = eventList.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -38,11 +42,11 @@ const SecondScreen = () => {
           알림/공지사항
         </span>
       </div>
-      <div className="w-10/12 flex justify-end">
+      {/* <div className="w-10/12 flex justify-end">
         <span className="underline text-gray-500 cursor-pointer my-3">
           알림 전체 확인
         </span>
-      </div>
+      </div> */}
       {sortedEventList?.map((event) => (
         <EventOrNoticeElement key={event.id} event={event} />
       ))}

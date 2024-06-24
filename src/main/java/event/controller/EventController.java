@@ -1,6 +1,7 @@
 package event.controller;
 
 import event.dto.EventDTO;
+import event.dto.EventIdAsReadDTO;
 import event.entity.Event;
 import event.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,6 +44,12 @@ public class EventController {
         log.info("이벤트접근 empId={}",empId);
         eventService.markEventAsRead(empId, eventId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/events/readList")
+    public List<EventIdAsReadDTO> getEventReadList(@AuthenticationPrincipal UserDetails userDetails){
+        String empId = userDetails.getUsername();
+        return eventService.getEventReadList(empId);
     }
 
 }
