@@ -11,11 +11,11 @@ const EventOrNoticeElement = ({ event }) => {
 
   return (
     <div
-      className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100"
+      className="w-full px-[8.333%] py-5 flex justify-between items-start bg-green-100 dark:bg-gray-700"
       onClick={handleImageClick}
     >
       <div className="w-14 h-full flex justify-center items-center">
-        <span>{event.eventType === "EVENT" ? "📢" : "✅"}</span>
+        <span>{event.eventType === "EVENT" ? "📢" : "💌"}</span>
       </div>
       <div className="w-full ml-2">
         <div className="flex flex-col items-start">

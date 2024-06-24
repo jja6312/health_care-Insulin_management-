@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Header from "../components/main/Header";
 import Point from "../components/main/Point";
@@ -28,6 +28,14 @@ const Main = () => {
   const handleIconClick = () => {
     setShowSecondScreen(!showSecondScreen);
   };
+  useEffect(() => {
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, []);
 
   return (
     <div
@@ -41,7 +49,7 @@ const Main = () => {
 
       {openPopup && <Popup />}
       <div
-        className={`dark:bg-dark screen mainScreen mt-10 ${
+        className={`dark:bg-dark h-full screen mainScreen mt-10 ${
           showSecondScreen ? "slideOutLeft" : "slideInRight"
         }`}
       >
@@ -56,8 +64,10 @@ const Main = () => {
         <Steps />
         <BloodSurgarVer2 />
       </div>
+
+      {/* 2번째스크린 : 이벤트 화면 */}
       <div
-        className={`screen secondScreen  mt-10 ${
+        className={`screen secondScreen mt-10 ${
           showSecondScreen ? "slideInRight" : "slideOutLeft"
         }`}
       >
