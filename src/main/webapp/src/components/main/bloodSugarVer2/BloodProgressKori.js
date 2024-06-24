@@ -29,7 +29,7 @@ const BloodProgressKori = () => {
   }, [selectedPeriod, setBloodCountAvgInPeriod]);
 
   return (
-    <div className="w-full border-4 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col mb-20">
+    <div className="w-10/12 border-4 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col mb-20">
       <div className="w-full flex justify-end">
         <span className="text-gray-500 text-sm mr-1 mt-2">
           *주간 사용자 평균 : {bloodCountAvgInPeriod}회

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Header from "../components/main/Header";
 import Point from "../components/main/Point";
@@ -6,39 +6,74 @@ import logo from "../assets/logo2.gif";
 import Period from "../components/main/Period";
 import Steps from "../components/main/Steps";
 import BloodSurgarVer2 from "../components/main/bloodSugarVer2/BloodSurgarVer2";
-// import { textArray } from "../../utils/point/pointText";
-// import { handleKoriClick } from "../../utils/point/pointHelpers";
 import { textArray } from "../utils/point/pointText";
 import { handleKoriClick } from "../utils/point/pointHelpers";
 import { usePointStore } from "../store/usePointStore";
 import { usePopupStore } from "../store/usePopupStore";
 import Popup from "../components/main/popup/Popup";
 
+import "../css/main/Main.css";
+import SecondScreen from "../components/main/secondScreen/SecondScreen";
+import { useEventStore } from "../store/useEventStore";
+import EventModal from "../components/main/secondScreen/modal/EventModal";
+
 Modal.setAppElement("#root");
 
 const Main = () => {
   const { setTexts } = usePointStore();
   const { openPopup } = usePopupStore();
+  const [showSecondScreen, setShowSecondScreen] = useState(false);
+  const { isEventModalOpen } = useEventStore();
+
+  const handleIconClick = () => {
+    setShowSecondScreen(!showSecondScreen);
+  };
+  useEffect(() => {
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, []);
 
   return (
     <div
-      className="dark:bg-dark min-h-screen flex flex-col py-1 px-6"
+      className="dark:bg-dark min-h-screen flex flex-col py-1 relative"
       onClick={() => handleKoriClick(setTexts, textArray)}
     >
-      <Header />
+      <Header
+        handleIconClick={handleIconClick}
+        showSecondScreen={showSecondScreen}
+      />
 
       {openPopup && <Popup />}
-
-      <div className="flex justify-center mt-1 gap-2">
-        <img src={logo} className="w-7" alt="logo" />
-        <span className="text-[27px] text-nhblue dark:text-nhblue font-extrabold">
-          NH 당뇨관리 리포트
-        </span>
+      <div
+        className={`dark:bg-dark h-full screen mainScreen mt-10 ${
+          showSecondScreen ? "slideOutLeft" : "slideInRight"
+        }`}
+      >
+        <div className="flex justify-center mt-1 gap-2">
+          <img src={logo} className="w-7" alt="logo" />
+          <span className="text-[27px] text-nhblue dark:text-nhblue font-extrabold">
+            NH 당뇨관리 리포트
+          </span>
+        </div>
+        <Period />
+        <Point />
+        <Steps />
+        <BloodSurgarVer2 />
       </div>
-      <Period />
-      <Point />
-      <Steps />
-      <BloodSurgarVer2 />
+
+      {/* 2번째스크린 : 이벤트 화면 */}
+      <div
+        className={`screen secondScreen mt-10 ${
+          showSecondScreen ? "slideInRight" : "slideOutLeft"
+        }`}
+      >
+        <SecondScreen />
+      </div>
+      {isEventModalOpen && <EventModal />}
     </div>
   );
 };

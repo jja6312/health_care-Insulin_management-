@@ -104,13 +104,13 @@ const Point = ({ onKoriClick }) => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Select Period"
-        className="modal dark:bg-dark dark:text-white h-[85vh] overflow-y-scroll mt-[48%]"
+        className="modal dark:bg-dark dark:text-white h-[85vh] overflow-y-scroll mt-[50%]"
         overlayClassName="overlay"
       >
         <div className="flex flex-col justify-center">
           {/* title */}
           <div className="relative flex justify-center -translate-y-2">
-            <span>포인트 적립 내역</span>
+            <span className="text-xl font-semibold">포인트 적립 내역</span>
             <span
               className="absolute right-2 curosr-pointer"
               onClick={() => setIsModalOpen(false)}
@@ -120,7 +120,7 @@ const Point = ({ onKoriClick }) => {
           </div>
 
           {/* content */}
-          <table className="text-center">
+          <table className="text-center mt-2">
             <tr className="h-12 font-semibold">
               <td>기간</td>
               <td>적립코리</td>
