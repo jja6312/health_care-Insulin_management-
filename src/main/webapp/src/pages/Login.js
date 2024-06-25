@@ -41,7 +41,7 @@ const Login = () => {
             htmlFor="empId"
             className="text-gray-600 dark:text-white w-1/3 text-sm md:text-2xl"
           >
-            사번
+            아이디(test1~15)
           </label>
           <input
             id="empId"
