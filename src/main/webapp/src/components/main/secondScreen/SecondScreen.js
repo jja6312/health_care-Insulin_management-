@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { getEvents } from "../../../api/event/getEvents";
 import { getNotices } from "../../../api/event/getNotices";
 import { getReadListByEmpId } from "../../../api/event/getReadListByEmpId";
 import EventOrNoticeElement from "./EventOrNoticeElement";
 import { useEventStore } from "../../../store/useEventStore";
 
-const SecondScreen = () => {
+const SecondScreen = ({ showSecondScreen }) => {
   const {
     selectedEvent,
     setReadList,
@@ -45,24 +45,25 @@ const SecondScreen = () => {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center dark:text-white ">
+    <div
+      className={`flex flex-col justify-center items-center dark:text-white
+        
+    `}
+    >
       <div className="py-4">
-        <span className="text-[27px] text-nhgreen font-extrabold ">
+        <span className="text-[27px] text-nhgreen font-extrabold">
           알림/공지사항
         </span>
       </div>
-      {/* <div className="w-10/12 flex justify-end">
-        <span className="underline text-gray-500 cursor-pointer my-3">
-          알림 전체 확인
-        </span>
-      </div> */}
-      {sortedNoticeList?.map((notice) => (
-        <EventOrNoticeElement key={notice.id} event={notice} />
-      ))}
+      <div className="w-full h-screen overflow-y-auto">
+        {sortedNoticeList?.map((notice) => (
+          <EventOrNoticeElement key={notice.id} event={notice} />
+        ))}
 
-      {sortedEventList?.map((event) => (
-        <EventOrNoticeElement key={event.id} event={event} />
-      ))}
+        {sortedEventList?.map((event) => (
+          <EventOrNoticeElement key={event.id} event={event} />
+        ))}
+      </div>
     </div>
   );
 };

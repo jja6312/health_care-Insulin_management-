@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import Header from "../components/main/Header";
 import Point from "../components/main/Point";
@@ -24,6 +24,8 @@ const Main = () => {
   const { openPopup } = usePopupStore();
   const [showSecondScreen, setShowSecondScreen] = useState(false);
   const { isEventModalOpen } = useEventStore();
+  const mainRef = useRef(null);
+  const secondScreenRef = useRef(null);
 
   const handleIconClick = () => {
     setShowSecondScreen(!showSecondScreen);
@@ -38,6 +40,22 @@ const Main = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   //showSecondScreen이 true로 바뀌면 0.5초뒤에 실행
+  //   if (showSecondScreen) {
+  //     // setTimeout(() => {
+  //     //   mainRef.current.style.display = "none";
+  //     // }, 500);
+  //     // secondScreenRef.current.style.display = "block";
+  //   }
+  //   //showSecondScreen이 false로 바뀌면 실행
+  //   if (!showSecondScreen) {
+  //     setTimeout(() => {
+  //       secondScreenRef.current.style.display = "none";
+  //     }, 500);
+  //   }
+  // }, [showSecondScreen]);
+
   return (
     <div
       className="dark:bg-dark min-h-screen flex flex-col py-1 relative"
@@ -50,9 +68,12 @@ const Main = () => {
 
       {openPopup && <Popup />}
       <div
+        ref={mainRef}
         className={`dark:bg-dark h-full screen mainScreen mt-10 ${
           showSecondScreen ? "slideOutLeft" : "slideInRight"
-        }`}
+        }
+        
+        `}
       >
         <div className="flex justify-center mt-1 gap-2">
           <img src={logo} className="w-7" alt="logo" />
@@ -71,8 +92,9 @@ const Main = () => {
         className={`screen secondScreen mt-10 ${
           showSecondScreen ? "slideInRight" : "slideOutLeft"
         }`}
+        ref={secondScreenRef}
       >
-        <SecondScreen />
+        <SecondScreen showSecondScreen={showSecondScreen} />
       </div>
       {isEventModalOpen && <EventModal />}
     </div>

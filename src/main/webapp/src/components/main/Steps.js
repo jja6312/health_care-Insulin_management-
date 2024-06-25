@@ -114,12 +114,14 @@ const Steps = () => {
           {countConsecutiveGoalSteps > 0 && (
             <div className="relative mr-2 -translate-y-1">
               <GradientFire />
-              <div className="absolute inset-0 flex justify-center items-center text-[8px] translate-y-1 dark:text-pink-100">
+              <div className="min-w-max absolute inset-0 flex justify-center items-center text-[8px] translate-y-1 dark:text-pink-100">
                 <span>연속</span>
-                <span className="font-extrabold text-[14px]">
-                  {countConsecutiveGoalSteps}
-                </span>
-                <span>일</span>
+                <div>
+                  <span className="font-extrabold text-[14px]">
+                    {countConsecutiveGoalSteps}
+                  </span>
+                  <span>일</span>
+                </div>
               </div>
             </div>
           )}
