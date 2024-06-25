@@ -55,15 +55,17 @@ const SecondScreen = ({ showSecondScreen }) => {
           알림/공지사항
         </span>
       </div>
-      <div className="w-full h-screen overflow-y-auto">
-        {sortedNoticeList?.map((notice) => (
-          <EventOrNoticeElement key={notice.id} event={notice} />
-        ))}
+      {showSecondScreen && (
+        <div className="w-full h-full">
+          {sortedNoticeList?.map((notice) => (
+            <EventOrNoticeElement key={notice.id} event={notice} />
+          ))}
 
-        {sortedEventList?.map((event) => (
-          <EventOrNoticeElement key={event.id} event={event} />
-        ))}
-      </div>
+          {sortedEventList?.map((event) => (
+            <EventOrNoticeElement key={event.id} event={event} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
