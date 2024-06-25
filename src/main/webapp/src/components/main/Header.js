@@ -5,13 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useEventStore } from "../../store/useEventStore";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ handleIconClick, showSecondScreen }) => {
   const { userInfoDTO } = useUserInfoStore();
   const { readList, eventList, noticeList } = useEventStore();
 
   return (
-    <div className="w-full flex justify-end items-center  my-2 text-[12px]">
+    <div className="relative w-full flex justify-end items-center  my-2 text-[12px]">
+      {showSecondScreen && (
+        <FontAwesomeIcon
+          className="text-xl absolute left-6 top-1 text-gray-500"
+          onClick={handleIconClick}
+          icon={faChevronLeft}
+        />
+      )}
       <div className="relative">
         <FontAwesomeIcon
           className="text-xl mr-3 text-gray-600 cursor-pointer hover:opacity-80"

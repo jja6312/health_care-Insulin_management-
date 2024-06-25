@@ -51,8 +51,8 @@ const BloodSurgarVer2 = () => {
       const dayOfWeek = today.getDay(); // 0: Sunday, 1: Monday, ..., 6: Saturday
 
       if (
-        selectedPeriod.start <= today &&
-        selectedPeriod.end >= today &&
+        // selectedPeriod.start <= today &&
+        // selectedPeriod.end >= today &&
         dayOfWeek >= 0 &&
         //혈당 데이터가 3회 미만인경우
         bloodSugarVer2InPeriod.length < 3
@@ -61,9 +61,13 @@ const BloodSurgarVer2 = () => {
         if (!localStorage.getItem(weekKey)) {
           //해당주차 weekKey가 없으면
           setShowWarning(true); //WarningMessage를 표시
+        } else {
+          //해당주차 weekKey가 있으면
+          setShowWarning(false); //끄기
         }
       } else {
-        setShowWarning(false);
+        //3회이상측정했으면
+        setShowWarning(false); //끄기
       }
     }
   }, [

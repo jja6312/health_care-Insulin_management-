@@ -108,10 +108,15 @@ const Steps = () => {
           </span>
         </div>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="relative w-10/12 border-2 border-gray-100 dark:border-[#202A33] flex justify-center">
+        {stepsInPeriod.length === 0 && (
+          <span className="absolute inset-0 flex items-center justify-center dark:text-white">
+            걸음수 업데이트가 필요해요
+          </span>
+        )}
         <ChartStep />
       </div>
-      {stepsInPeriod.length === 0 && (
+      {/* {stepsInPeriod.length === 0 && (
         <>
           <div className="absolute flex flex-col justify-center items-center bg-black dark:opacity-80 opacity-50 w-full md:w-1/3 h-full text-white ">
             <span className="text-xl">해당 기간의</span>
@@ -124,7 +129,7 @@ const Steps = () => {
           </div>
           <div className="h-[160px]"></div>
         </>
-      )}
+      )} */}
     </div>
   );
 };
