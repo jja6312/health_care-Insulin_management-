@@ -18,6 +18,7 @@ public class Event {
     private Long id;
     private String title;
     private String content;
+    private String hyperlink;
     private LocalDateTime createdAt;
     private String empId;
 
