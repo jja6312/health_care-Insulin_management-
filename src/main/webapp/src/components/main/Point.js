@@ -57,7 +57,9 @@ const Point = ({ onKoriClick }) => {
             className={`ml-2
             ${weeklyEarnedPoint != 0 ? "text-nhgreen" : "text-orange-400"}`}
           >
-            {weeklyEarnedPoint}
+            {isNaN(weeklyEarnedPoint) || weeklyEarnedPoint === null
+              ? 0
+              : weeklyEarnedPoint}
           </span>
           <span className="dark:text-white">코리 모았어요</span>
         </div>

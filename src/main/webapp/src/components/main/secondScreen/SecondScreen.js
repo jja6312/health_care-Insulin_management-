@@ -46,8 +46,8 @@ const SecondScreen = () => {
 
   return (
     <div className="flex flex-col justify-center items-center dark:text-white ">
-      <div>
-        <span className="text-[27px] text-nhgreen font-extrabold">
+      <div className="py-4">
+        <span className="text-[27px] text-nhgreen font-extrabold ">
           알림/공지사항
         </span>
       </div>

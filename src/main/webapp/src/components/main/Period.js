@@ -64,6 +64,10 @@ const Period = () => {
 
       if (isThursdayOrLater) {
         setSelectedPeriod(currentPeriod);
+      } else if (currentPeriod.week === 1) {
+        // 첫번째 주차라면 현재주차를선택
+
+        setSelectedPeriod(currentPeriod);
       } else {
         setSelectedPeriod(previousPeriod);
       }

@@ -4,7 +4,7 @@ import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 const WarningMessage = ({ onConfirm }) => {
   return (
-    <div className="gap-1 w-full h-12 flex flex-col justify-center items-center border-2 border-red-500 bg-red-300 rounded-lg my-2 py-8">
+    <div className="gap-1 w-10/12 h-12 flex flex-col justify-center items-center border-2 border-red-500 bg-red-300 rounded-lg my-2 py-8">
       <div className="flex gap-1 justify-center items-center">
         <FontAwesomeIcon
           className="text-red-500"
