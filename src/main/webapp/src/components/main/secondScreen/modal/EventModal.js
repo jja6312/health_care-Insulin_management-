@@ -38,11 +38,13 @@ const EventModal = () => {
       >
         <div className="flex flex-col items-center">
           <span className="text-xl mb-2">{selectedEvent.title}</span>
-          <img
-            className="w-full mb-2 border-gray-300 border-4"
-            src={`${selectedEvent.image}`}
-            alt="event"
-          />
+          {selectedEvent.eventType === "EVENT" && (
+            <img
+              className="w-full mb-2 border-gray-300 border-4"
+              src={`${selectedEvent.image}`}
+              alt="event"
+            />
+          )}
           <span className="text-gray-500">{selectedEvent.content}</span>
         </div>
       </div>
