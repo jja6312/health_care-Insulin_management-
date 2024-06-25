@@ -30,13 +30,18 @@ const Point = ({ onKoriClick }) => {
   }, []);
 
   useEffect(() => {
-    setWeeklyEarnedPoint(
-      numberFormat(
-        weeklyEarnedPoints.filter(
-          (data) => data?.week === selectedPeriod?.week
-        )[0]?.point
-      )
-    );
+    if (selectedPeriod && weeklyEarnedPoints.length > 0) {
+      const matchedPoint = weeklyEarnedPoints.find(
+        (data) => data.week === selectedPeriod.week
+      );
+
+      if (matchedPoint) {
+        setWeeklyEarnedPoint(matchedPoint.point);
+      } else {
+        console.log("No matching points found for the selected period.");
+        setWeeklyEarnedPoint(0); // 일치하는 데이터가 없는 경우 0으로 설정
+      }
+    }
   }, [selectedPeriod, weeklyEarnedPoints]);
 
   return (
