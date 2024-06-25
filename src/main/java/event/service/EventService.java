@@ -34,6 +34,7 @@ public class EventService {
         Event event = Event.builder()
                 .title(noticeDTO.getTitle())
                 .content(noticeDTO.getContent())
+                .hyperlink(noticeDTO.getHyperlink())
                 .eventType(EventType.NOTICE)
                 .empId(noticeDTO.getEmpId())
                 .build();

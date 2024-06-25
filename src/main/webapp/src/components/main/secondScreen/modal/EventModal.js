@@ -29,7 +29,7 @@ const EventModal = () => {
   }, [isEventModalOpen]);
 
   return (
-    <div className="fixed w-full h-full inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed w-full h-full inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-80">
       {/* 이미지 모달 */}
       <div
         ref={modalRef}
@@ -38,11 +38,24 @@ const EventModal = () => {
       >
         <div className="flex flex-col items-center">
           <span className="text-xl mb-2">{selectedEvent.title}</span>
-          <img
-            className="w-full mb-2 border-gray-300 border-4"
-            src={`${selectedEvent.image}`}
-            alt="event"
-          />
+          {/* EVENT 공지사항이라면, 이미지를 띄운다. */}
+          {selectedEvent.eventType === "EVENT" ? (
+            <img
+              className="w-full mb-2 border-gray-300 border-4"
+              src={`${selectedEvent.image}`}
+              alt="event"
+            />
+          ) : (
+            <a
+              href={selectedEvent.hyperlink}
+              className="text-blue-500 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {selectedEvent.hyperlink}
+            </a>
+          )}
+
           <span className="text-gray-500">{selectedEvent.content}</span>
         </div>
       </div>

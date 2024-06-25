@@ -7,6 +7,7 @@ const Admin2 = () => {
     empId: "",
     title: "",
     content: "",
+    hyperlink: "",
   });
 
   const handleChange = (e) => {
@@ -61,6 +62,14 @@ const Admin2 = () => {
         onChange={handleChange}
         placeholder="내용"
         name="content"
+      />
+      <input
+        className="border-2 border-black w-10/12"
+        value={noticeDTO.hyperlink}
+        onChange={handleChange}
+        type="text"
+        placeholder="링크"
+        name="hyperlink"
       />
 
       <button className="bg-blue-400 rounded-xl w-10/12" onClick={handleSubmit}>

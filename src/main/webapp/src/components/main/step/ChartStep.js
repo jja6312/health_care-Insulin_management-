@@ -39,8 +39,6 @@ const ChartStep = () => {
     return <div>Loading...</div>;
   }
 
-  const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
-
   // Helper function to generate all dates between two dates
   const generateDateArray = (start, end) => {
     const arr = [];
@@ -60,11 +58,8 @@ const ChartStep = () => {
       ? new Date(stepsInPeriod[stepsInPeriod.length - 1].date)
       : null;
 
-  if (!startDate || !endDate) {
-    return <div>No data available</div>;
-  }
-
-  const allDates = generateDateArray(startDate, endDate);
+  const allDates =
+    startDate && endDate ? generateDateArray(startDate, endDate) : [];
 
   const stepsMap = stepsInPeriod.reduce((acc, entry) => {
     acc[entry.date] = entry.stepsCount;
@@ -72,7 +67,7 @@ const ChartStep = () => {
   }, {});
 
   const labels = allDates.map((date) => {
-    return daysOfWeek[date.getDay()];
+    return date.toLocaleDateString("ko-KR", { weekday: "short" }); // 요일을 짧은 형식으로 가져오기
   });
 
   const data = allDates.map((date) => {

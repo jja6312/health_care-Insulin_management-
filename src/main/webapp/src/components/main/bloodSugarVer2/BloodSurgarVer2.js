@@ -44,24 +44,38 @@ const BloodSurgarVer2 = () => {
       setBloodSugarVer2InPeriod(bloodSugarVer2InPeriod);
       console.log("bloodSugarVer2InPeriod", bloodSugarVer2InPeriod);
 
-      // 추가: 오늘이 목요일 이후인지 확인하고, 해당 주차에 대해 WarningMessage를 표시할지 결정
+      //----------------------------------------------
+      //긴급알림 localstorage 로직
+      //오늘이 일요일 이후인지 확인하고, 해당 주차에 대해 WarningMessage를 표시할지 결정
       const today = new Date();
       const dayOfWeek = today.getDay(); // 0: Sunday, 1: Monday, ..., 6: Saturday
 
       if (
-        selectedPeriod.start <= today &&
-        selectedPeriod.end >= today &&
-        dayOfWeek >= 4 &&
+        // selectedPeriod.start <= today &&
+        // selectedPeriod.end >= today &&
+        dayOfWeek >= 0 &&
         //혈당 데이터가 3회 미만인경우
         bloodSugarVer2InPeriod.length < 3
       ) {
         const weekKey = `hideWarning_week_${selectedPeriod.week}`;
         if (!localStorage.getItem(weekKey)) {
-          setShowWarning(true);
+          //해당주차 weekKey가 없으면
+          setShowWarning(true); //WarningMessage를 표시
+        } else {
+          //해당주차 weekKey가 있으면
+          setShowWarning(false); //끄기
         }
+      } else {
+        //3회이상측정했으면
+        setShowWarning(false); //끄기
       }
     }
-  }, [userInfoDTO, selectedPeriod, calculateAverageBloodSugar]);
+  }, [
+    userInfoDTO,
+    selectedPeriod,
+    calculateAverageBloodSugar,
+    setBloodSugarVer2InPeriod,
+  ]);
 
   // 추가: '확인' 버튼 클릭 핸들러
   const handleConfirm = () => {

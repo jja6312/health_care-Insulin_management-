@@ -9,4 +9,5 @@ public class NoticeDTO {
     private String empId;
     private String title;
     private String content;
+    private String hyperlink;
 }
