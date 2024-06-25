@@ -36,20 +36,13 @@ const SecondScreen = ({ showSecondScreen }) => {
     fetchEventsAndNotices();
   }, [selectedEvent]);
 
-  const sortedEventList = eventList.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-
-  const sortedNoticeList = noticeList.sort(
+  // eventList와 noticeList를 합치고 createdAt 기준으로 정렬
+  const sortedEventsAndNotices = [...eventList, ...noticeList].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
   return (
-    <div
-      className={`flex flex-col justify-center items-center dark:text-white
-        
-    `}
-    >
+    <div className="flex flex-col justify-center items-center dark:text-white">
       <div className="py-4">
         <span className="text-[27px] text-nhgreen font-extrabold">
           알림/공지사항
@@ -57,12 +50,8 @@ const SecondScreen = ({ showSecondScreen }) => {
       </div>
       {showSecondScreen && (
         <div className="w-full h-full">
-          {sortedNoticeList?.map((notice) => (
-            <EventOrNoticeElement key={notice.id} event={notice} />
-          ))}
-
-          {sortedEventList?.map((event) => (
-            <EventOrNoticeElement key={event.id} event={event} />
+          {sortedEventsAndNotices.map((item) => (
+            <EventOrNoticeElement key={item.id} event={item} />
           ))}
         </div>
       )}
