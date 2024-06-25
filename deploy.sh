@@ -1,9 +1,13 @@
-#!/bin/bash
-
 # AWS Secrets Manager에서 환경 변수 조회
 SECRET_NAME="aws/secretsmanager/nonghyuphealthcare"
 REGION="ap-northeast-2"
-
+# jq가 설치되어 있는지 확인 (설치되지 않은 경우 설치)
+if ! command -v jq &> /dev/null
+then
+    echo "jq could not be found, installing..."
+    sudo apt-get update
+    sudo apt-get install -y jq
+fi
 # AWS CLI를 사용하여 비밀 값을 조회
 SECRET=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
 
@@ -25,10 +29,11 @@ fi
 # 잠시 대기
 sleep 5
 
+# 로그 디렉토리 생성
+mkdir -p $SPRINGBOOT_DIR/logs
+
 # 새 Spring Boot 애플리케이션 배포
 JAR_NAME=$(ls $SPRINGBOOT_DIR | grep '.jar' | tail -n 1)
 echo "Deploying $JAR_NAME"
-#nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > $SPRINGBOOT_DIR/$(date +%F_%T)-nohup.out 2>&1 &
-#ec2 상태검사 1/2로 변하는 에러를 /dev/null로 리다이렉션해서 해결해보자.(로그 기록 x)
-nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > /dev/null 2>&1 &
-
+# nohup으로 애플리케이션 실행 시 로그 파일 생성
+nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME --spring.profiles.active=prod > $SPRINGBOOT_DIR/logs/myBlogLog.log 2>&1 &
