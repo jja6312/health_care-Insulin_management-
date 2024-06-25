@@ -6,12 +6,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import ChartStep from "./step/ChartStep";
 import numberFormat from "../../utils/numberFormat";
+import { getConsecutiveGoalSteps } from "../../api/steps/getConsecutiveGoalSteps";
+import GradientFire from "./GradientFire";
 
 const Steps = () => {
   const { userInfoDTO } = useUserInfoStore();
   const { selectedPeriod } = usePeriodStore();
-  const { stepsInPeriod, setStepsInPeriod, setAverageSteps, averageSteps } =
-    useStepStore();
+  const {
+    countConsecutiveGoalSteps,
+    setCountConsecutiveGoalSteps,
+    stepsInPeriod,
+    setStepsInPeriod,
+    setAverageSteps,
+    averageSteps,
+  } = useStepStore();
   const [moreOrLessStep, setMoreOrLessStep] = useState(false);
   const [subStep, setSubStep] = useState(0);
   const [stepColor, setStepColor] = useState("text-nhgreen");
@@ -73,6 +81,16 @@ const Steps = () => {
     }
   }, [selectedPeriod, userInfoDTO, setStepsInPeriod, setAverageSteps]);
 
+  // 연속걸음수가져오기
+  useEffect(() => {
+    const fetchConsecutiveGoalSteps = async () => {
+      const consecutiveGoalSteps = await getConsecutiveGoalSteps();
+      setCountConsecutiveGoalSteps(consecutiveGoalSteps);
+      console.log("countConsecutiveGoalSteps", consecutiveGoalSteps);
+    };
+    fetchConsecutiveGoalSteps();
+  }, [setCountConsecutiveGoalSteps]);
+
   return (
     <div className="relative flex flex-col justify-center items-center pt-5 mt-5 ">
       <div className="flex justify-center ">
@@ -93,6 +111,18 @@ const Steps = () => {
       {/* 목표보다 얼마나 더걸었는지 표시 */}
       <div className="w-full flex justify-center">
         <div className="flex justify-center items-center font-bold mt-2 text-[13px]">
+          {countConsecutiveGoalSteps > 0 && (
+            <div className="relative mr-2 -translate-y-1">
+              <GradientFire />
+              <div className="absolute inset-0 flex justify-center items-center text-[8px] translate-y-1 dark:text-pink-100">
+                <span>연속</span>
+                <span className="font-extrabold text-[14px]">
+                  {countConsecutiveGoalSteps}
+                </span>
+                <span>일</span>
+              </div>
+            </div>
+          )}
           <span className="text-gray-500">
             목표 {numberFormat(userInfoDTO?.stepGoal)}걸음 대비
           </span>

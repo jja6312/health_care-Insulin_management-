@@ -38,7 +38,7 @@ const EventModal = () => {
       >
         <div className="flex flex-col items-center">
           <span className="text-xl mb-2">{selectedEvent.title}</span>
-          {/* EVENT 공지사항이라면, 이밎를 띄운다. */}
+          {/* EVENT 공지사항이라면, 이미지를 띄운다. */}
           {selectedEvent.eventType === "EVENT" ? (
             <img
               className="w-full mb-2 border-gray-300 border-4"
