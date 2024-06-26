@@ -9,6 +9,6 @@ import java.time.LocalDate;
 @Setter
 public class PointDTO {
     private String empId;
-    private int pointsEarned;
+    private double pointsEarned;
     private LocalDate date;
 }

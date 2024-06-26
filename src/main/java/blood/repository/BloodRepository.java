@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public interface BloodRepository extends JpaRepository<BloodSugarsVer2, Long> {
 
-    @Query(value = "SELECT AVG(blood_sugar_count) FROM (" +
+    @Query(value = "SELECT ROUND(SUM(blood_sugar_count)/15,2) FROM (" +
             "    SELECT COUNT(b.id) AS blood_sugar_count" +
             "    FROM user a" +
             "    JOIN blood_sugars_ver2 b ON a.id = b.emp_id" +

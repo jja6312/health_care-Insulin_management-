@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class UserInfoDTO {
     private String empId;
-    private int totalPoints;
+    private double totalPoints;
     private int stepGoal;
     private LocalDate createdAt;
     private List<StepDTO> steps;

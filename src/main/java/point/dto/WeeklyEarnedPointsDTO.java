@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class WeeklyEarnedPointsDTO {
     private int week;
-    private int point;
+    private double point;
     private LocalDate startPeriod;
     private LocalDate endPeriod;
 }

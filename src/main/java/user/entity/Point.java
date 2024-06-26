@@ -15,17 +15,17 @@ public class Point {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="emp_id") // 유저의 사원 번호
+    @JoinColumn(name = "emp_id") // 유저의 사원 번호
     private User user;
 
-    private int pointsEarned; // 얻은 포인트
+    private double pointsEarned; // 얻은 포인트
     private LocalDate date; // 날짜
 
     @Builder
-    public Point(User user, int pointsEarned, LocalDate date){
+    public Point(User user, double pointsEarned, LocalDate date) {
         this.user = user;
         this.pointsEarned = pointsEarned;
-        this.date=date;
+        this.date = date;
     }
 
 }

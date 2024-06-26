@@ -1,6 +1,5 @@
 package user.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,23 +18,23 @@ public class User {
     private String empId; // 사원번호
     private String password; // 패스워드
     private LocalDateTime createdAt; // 가입일
-    private int totalPoints; //누적 포인트
+    private double totalPoints; // 누적 포인트
     private int stepGoal;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Steps> steps; //걸음수 목록
+    private List<Steps> steps; // 걸음수 목록
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Point> points; //포인트목록
+    private List<Point> points; // 포인트목록
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BloodSugars> bloodSugars; //걸음수 목록
+    private List<BloodSugars> bloodSugars; // 걸음수 목록
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BloodSugarsVer2> bloodSugarsVer2; //걸음수 목록
+    private List<BloodSugarsVer2> bloodSugarsVer2; // 걸음수 목록
 
     public void updateTotalPoints() {
-        this.totalPoints = points.stream().mapToInt(Point::getPointsEarned).sum();
+        this.totalPoints = points.stream().mapToDouble(Point::getPointsEarned).sum();
     }
 
     @Builder

@@ -20,7 +20,7 @@ public class PointService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Point addPoint(User user, int pointsEarned, LocalDate date) {
+    public Point addPoint(User user, double pointsEarned, LocalDate date) {
         Point point = Point.builder()
                 .user(user)
                 .pointsEarned(pointsEarned)
@@ -44,9 +44,9 @@ public class PointService {
             LocalDate weekStartDate = startDate.plusWeeks(week);
             LocalDate weekEndDate = weekStartDate.plusWeeks(1);
 
-            int weekPoints = points.stream()
+            double weekPoints = points.stream()
                     .filter(p -> !p.getDate().isBefore(weekStartDate) && p.getDate().isBefore(weekEndDate))
-                    .mapToInt(Point::getPointsEarned)
+                    .mapToDouble(Point::getPointsEarned)
                     .sum();
 
             WeeklyEarnedPointsDTO weeklyEarnedPointsDTO = new WeeklyEarnedPointsDTO();
