@@ -37,7 +37,9 @@ const EventModal = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col items-center">
-          <span className="text-xl mb-2">{selectedEvent.title}</span>
+          {selectedEvent.eventType === "NOTICE" && (
+            <span className="text-xl mb-2">{selectedEvent.title}</span>
+          )}
           {/* EVENT 공지사항이라면, 이미지를 띄운다. */}
           {selectedEvent.eventType === "EVENT" ? (
             <img
@@ -56,7 +58,9 @@ const EventModal = () => {
             </a>
           )}
 
-          <span className="text-gray-500">{selectedEvent.content}</span>
+          {selectedEvent.eventType === "NOTICE" && (
+            <span className="text-gray-500">{selectedEvent.content}</span>
+          )}
         </div>
       </div>
       <div className="w-full flex justify-end mr-8">
