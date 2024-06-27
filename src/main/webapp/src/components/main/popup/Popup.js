@@ -56,13 +56,13 @@ const Popup = () => {
         {images.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === activeIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute flex justify-center items-center inset-0 transition-opacity duration-1000 
+              bg-[#F6A8C0]
+              ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
           >
             <img
               src={img}
-              className="block w-full h-full object-cover"
+              className="block w-full object-fit"
               alt={`popup${index + 1}`}
             />
           </div>
