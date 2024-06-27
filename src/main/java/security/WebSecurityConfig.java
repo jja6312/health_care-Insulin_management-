@@ -25,7 +25,7 @@ public class WebSecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // CSRF 보호 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/login", "/api/refresh").permitAll()  // /api/login 및 /api/refresh 경로에 대해 인증 없이 접근 허용
+                        .requestMatchers("/api/login", "/api/refresh", "/api/check-session").permitAll()  // /api/login, /api/refresh, /api/check-session 경로에 대해 인증 없이 접근 허용
                         .anyRequest().authenticated()  // 모든 요청에 대해 인증 요구
                 )
                 .sessionManagement(session -> session

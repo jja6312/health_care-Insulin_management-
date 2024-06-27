@@ -25,16 +25,21 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("Authorization");
-
         String empId = null;
         String jwt = null;
+
+        // 특정 엔드포인트에 대해 인증을 건너뛰기
+        String requestURI = request.getRequestURI();
+        if (requestURI.equals("/api/refresh") || requestURI.equals("/api/check-session")) {
+            chain.doFilter(request, response);
+            return;
+        }
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             try {
                 empId = jwtUtil.extractUsername(jwt);
             } catch (ExpiredJwtException e) {
-                // JWT가 만료된 경우 예외를 GlobalExceptionHandler로 전달
                 request.setAttribute("expiredTokenException", e);
             }
         }
@@ -50,4 +55,5 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
+
 }

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/logo.svg";
 import DarkModeBtnCircle from "../components/darkMode/DarkModeBtnCircle";
 import { useLoginStore } from "../store/useLoginStore";
 import { useNavigate } from "react-router-dom";
-
 import handleSubmit from "../utils/login/handleSubmit";
 import checkSession from "../api/checkSession";
 
@@ -11,10 +10,12 @@ const Login = () => {
   const { loginDTO, setLoginDTO, loading, error, setLoading, setError } =
     useLoginStore();
   const navigate = useNavigate();
+  const [rememberMe, setRememberMe] = useState(false);
 
   useEffect(() => {
     const validateSession = async () => {
       const isValid = await checkSession();
+      console.log("Session valid:", isValid);
       if (isValid) {
         navigate("/");
       }
@@ -28,7 +29,11 @@ const Login = () => {
   };
 
   const handleFormSubmit = (e) => {
-    handleSubmit(e, navigate, setLoading, setError, loginDTO);
+    handleSubmit(e, navigate, setLoading, setError, loginDTO, rememberMe);
+  };
+
+  const toggleRememberMe = () => {
+    setRememberMe(!rememberMe);
   };
 
   return (
@@ -67,6 +72,21 @@ const Login = () => {
             value={loginDTO.password}
             type="password"
           />
+        </div>
+        <div className="w-full justify-start flex items-center mt-3 gap-2">
+          {/* 로그인저장 */}
+          <input
+            type="checkbox"
+            className="w-6 h-6"
+            checked={rememberMe}
+            onChange={toggleRememberMe}
+          />
+          <span
+            className="text-gray-600 dark:text-white text-sm md:text-2xl cursor-pointer"
+            onClick={toggleRememberMe}
+          >
+            로그인 유지하기
+          </span>
         </div>
 
         {/* 로그인 버튼 */}
