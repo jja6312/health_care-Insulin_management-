@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useEventStore } from "../../../../store/useEventStore";
+import WeeklyImage from "../WeeklyImage";
 
 const EventModal = () => {
   const { selectedEvent, isEventModalOpen, setIsEventModalOpen } =
@@ -41,12 +42,16 @@ const EventModal = () => {
             <span className="text-xl mb-2">{selectedEvent.title}</span>
           )}
           {/* EVENT 공지사항이라면, 이미지를 띄운다. */}
-          {selectedEvent.eventType === "EVENT" ? (
+          {selectedEvent.eventType === "EVENT" &&
+          selectedEvent.weeklyImage === null ? (
             <img
               className="w-full mb-2 border-gray-300 border-4"
               src={`${selectedEvent.image}`}
               alt="event"
             />
+          ) : selectedEvent.eventType === "EVENT" &&
+            selectedEvent.weeklyImage === "1회차" ? (
+            <WeeklyImage />
           ) : (
             <a
               href={selectedEvent.hyperlink}

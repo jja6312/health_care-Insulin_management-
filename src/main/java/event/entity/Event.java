@@ -22,6 +22,8 @@ public class Event {
     private LocalDateTime createdAt;
     private String empId;
 
+    private String weeklyImage;
+
 
     @Enumerated(EnumType.STRING)
     private EventType eventType;

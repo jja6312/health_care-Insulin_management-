@@ -1,6 +1,7 @@
 import React from "react";
 import { useEventStore } from "../../../store/useEventStore";
 import { markEventAsRead } from "../../../api/event/markEventAsRead";
+import WeeklyImage from "./WeeklyImage";
 
 const EventOrNoticeElement = ({ event }) => {
   const { readList, setSelectedEvent, setIsEventModalOpen } = useEventStore();
