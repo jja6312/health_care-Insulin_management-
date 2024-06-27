@@ -51,21 +51,21 @@ const WeeklyImage = () => {
           >
             <img
               src={img}
-              className="block w-full h-full object-cover"
+              className="block w-full h-full object-fit"
               alt={`slide${index + 1}`}
             />
           </div>
         ))}
         <button
           type="button"
-          className="absolute text-nhblue top-1/2 left-0 transform -translate-y-1/2 px-4 py-2 bg-white rounded-full shadow-md"
+          className="absolute text-nhblue top-1/2 -left-1 transform -translate-y-1/2 px-3 py-1 bg-white rounded-full shadow-md"
           onClick={prevSlide}
         >
           &lt;
         </button>
         <button
           type="button"
-          className="absolute text-nhblue top-1/2 right-0 transform -translate-y-1/2 px-4 py-2 bg-white rounded-full shadow-md"
+          className="absolute text-nhblue top-1/2 -right-1 transform -translate-y-1/2 px-3 py-1 bg-white rounded-full shadow-md"
           onClick={nextSlide}
         >
           &gt;
