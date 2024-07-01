@@ -10,4 +10,5 @@ public class NoticeDTO {
     private String title;
     private String content;
     private String hyperlink;
+    private String image;
 }
