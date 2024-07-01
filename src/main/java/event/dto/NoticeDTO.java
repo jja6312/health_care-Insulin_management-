@@ -11,4 +11,5 @@ public class NoticeDTO {
     private String content;
     private String hyperlink;
     private String image;
+    private String weeklyImage;
 }

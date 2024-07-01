@@ -37,7 +37,8 @@ const EventOrNoticeElement = ({ event }) => {
         </div>
       </div>
       {/* base64 이미지 불러오기 */}
-      {event.eventType === "EVENT" ? (
+      {event.eventType === "EVENT" ||
+      (event.eventType === "NOTICE" && event.image !== null) ? (
         <img className="w-10 h-10" src={`${event.image}`} alt="event" />
       ) : (
         <div className="w-10 h-10"></div>

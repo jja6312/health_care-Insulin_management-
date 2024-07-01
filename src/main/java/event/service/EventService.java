@@ -38,6 +38,7 @@ public class EventService {
                 .hyperlink(noticeDTO.getHyperlink())
                 .eventType(EventType.NOTICE)
                 .empId(noticeDTO.getEmpId())
+                .weeklyImage(noticeDTO.getWeeklyImage())
                 .build();
         return eventRepository.save(event);
     }

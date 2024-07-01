@@ -11,6 +11,7 @@ const Admin2 = () => {
     content: "",
     image: "",
     hyperlink: "",
+    weeklyImage: "",
   });
 
   const handleChange = (e) => {
@@ -66,6 +67,7 @@ const Admin2 = () => {
         placeholder="비정기알람 제목"
         name="title"
       />
+
       <textarea
         className="border-2 border-black w-10/12"
         value={noticeDTO.content}
@@ -82,6 +84,19 @@ const Admin2 = () => {
         name="hyperlink"
       />
 
+      <span className="w-10/12 flex justify-first font-semibold">
+        weeklyImage
+      </span>
+      <input
+        className="border-2 border-black w-10/12"
+        value={noticeDTO.weeklyImage}
+        onChange={handleChange}
+        type="text"
+        placeholder="A1,A2,...,A8,B1,B2,...,D8"
+        name="weeklyImage"
+      />
+
+      <span className="w-10/12 flex justify-first font-semibold">썸네일</span>
       <input
         ref={fileInputRef}
         onChange={handleImageChange}
