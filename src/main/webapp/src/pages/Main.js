@@ -16,6 +16,7 @@ import "../css/main/Main.css";
 import SecondScreen from "../components/main/secondScreen/SecondScreen";
 import { useEventStore } from "../store/useEventStore";
 import EventModal from "../components/main/secondScreen/modal/EventModal";
+import checkSession from "../api/checkSession"; // checkSession import
 
 Modal.setAppElement("#root");
 
@@ -30,6 +31,7 @@ const Main = () => {
   const handleIconClick = () => {
     setShowSecondScreen(!showSecondScreen);
   };
+
   useEffect(() => {
     const darkMode = localStorage.getItem("darkMode");
     const darkMode2 = localStorage.getItem("theme");
@@ -38,23 +40,21 @@ const Main = () => {
     } else {
       document.body.classList.remove("dark-mode");
     }
-  }, []);
 
-  // useEffect(() => {
-  //   //showSecondScreen이 true로 바뀌면 0.5초뒤에 실행
-  //   if (showSecondScreen) {
-  //     // setTimeout(() => {
-  //     //   mainRef.current.style.display = "none";
-  //     // }, 500);
-  //     // secondScreenRef.current.style.display = "block";
-  //   }
-  //   //showSecondScreen이 false로 바뀌면 실행
-  //   if (!showSecondScreen) {
-  //     setTimeout(() => {
-  //       secondScreenRef.current.style.display = "none";
-  //     }, 500);
-  //   }
-  // }, [showSecondScreen]);
+    // 세션 체크 로그 추가
+    console.log("Checking session...");
+    checkSession()
+      .then((isValid) => {
+        console.log("Session valid:", isValid);
+        if (!isValid) {
+          window.location.href = "/login";
+        }
+      })
+      .catch((error) => {
+        console.error("Session check failed:", error);
+        window.location.href = "/login";
+      });
+  }, []);
 
   return (
     <div

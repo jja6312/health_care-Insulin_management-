@@ -13,7 +13,6 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useStepStore } from "../../../store/useStepStore";
 import { useUserInfoStore } from "../../../store/useUserInfoStore";
 
-// 필요한 구성 요소 등록
 Chart.register(
   CategoryScale,
   LinearScale,
@@ -24,7 +23,7 @@ Chart.register(
   ChartDataLabels
 );
 
-const ChartStep = () => {
+const ChartStep = ({ textColor }) => {
   const { stepsInPeriod } = useStepStore();
   const { userInfoDTO } = useUserInfoStore();
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +38,6 @@ const ChartStep = () => {
     return <div>Loading...</div>;
   }
 
-  // Helper function to generate all dates between two dates
   const generateDateArray = (start, end) => {
     const arr = [];
     const dt = new Date(start);
@@ -50,7 +48,6 @@ const ChartStep = () => {
     return arr;
   };
 
-  // Get the start and end dates from stepsInPeriod
   const startDate =
     stepsInPeriod.length > 0 ? new Date(stepsInPeriod[0].date) : null;
   const endDate =
@@ -67,7 +64,7 @@ const ChartStep = () => {
   }, {});
 
   const labels = allDates.map((date) => {
-    return date.toLocaleDateString("ko-KR", { weekday: "short" }); // 요일을 짧은 형식으로 가져오기
+    return date.toLocaleDateString("ko-KR", { weekday: "short" });
   });
 
   const data = allDates.map((date) => {
@@ -86,7 +83,7 @@ const ChartStep = () => {
     labels: labels,
     datasets: [
       {
-        label: "", // 라벨을 빈 문자열로 설정
+        label: "",
         data: data,
         backgroundColor: backgroundColor,
         borderColor: borderColor,
@@ -100,16 +97,16 @@ const ChartStep = () => {
       y: {
         beginAtZero: true,
         ticks: {
-          display: false, // y축 눈금 라벨 비활성화
+          display: false,
         },
         grid: {
-          display: false, // y축 그리드 라인 비활성화
+          display: false,
         },
       },
       x: {
         ticks: {
           font: {
-            size: 18, // 요일 폰트 크기 설정
+            size: 18,
           },
         },
       },
@@ -117,31 +114,30 @@ const ChartStep = () => {
     maintainAspectRatio: false,
     layout: {
       padding: {
-        top: 20, // 상단 여백 추가
+        top: 20,
       },
     },
     plugins: {
       legend: {
-        display: false, // Legend 플러그인 비활성화
+        display: false,
       },
       datalabels: {
         anchor: "end",
-        align: "end", // "top"에서 "end"로 변경하여 위치 조정
-        offset: -5, // 막대에서 레이블을 떨어뜨리는 거리 설정
-        clip: false, // 레이블이 차트 영역을 벗어나지 않도록 설정
-        formatter: (value) => value.toLocaleString(), // 천 단위 콤마 추가
-        // color: "#C4DFB3",
-        color: "#aedc91",
+        align: "end",
+        offset: -5,
+        clip: false,
+        formatter: (value) => value.toLocaleString(),
+        color: textColor,
         font: {
           weight: "bold",
-          size: 16,
+          size: 11,
         },
       },
     },
   };
 
   return (
-    <div className="w-[90%] h-[160px] mt-6 ">
+    <div className="w-[90%] h-[160px] mt-6">
       <Bar data={chartData} options={options} />
     </div>
   );

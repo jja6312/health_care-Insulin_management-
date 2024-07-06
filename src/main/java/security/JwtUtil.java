@@ -1,6 +1,7 @@
 package security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,8 @@ public class JwtUtil {
     private String SECRET_KEY;
 
     private static final long ACCESS_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 7; // 7일
-    private static final long REFRESH_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 31; // 31 days
+    private static final long REFRESH_TOKEN_VALIDITY = 1000L * 60 * 60 * 24 * 31 * 6; // 6 months
+
 
     public String generateAccessToken(User user) {
         return generateToken(user.getEmpId(), ACCESS_TOKEN_VALIDITY);
@@ -55,10 +57,12 @@ public class JwtUtil {
 
     public boolean validateToken(String token) {
         try {
-            extractClaims(token);
+            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
             return true;
-        } catch (Exception e) {
+        } catch (JwtException | IllegalArgumentException e) {
+            System.err.println("Invalid JWT: " + e.getMessage());
             return false;
         }
     }
+
 }

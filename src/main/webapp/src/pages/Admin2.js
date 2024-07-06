@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createNotice } from "../api/event/createNotice";
 
 // notice 작성페이지
 const Admin2 = () => {
+  const fileInputRef = useRef(null);
+
   const [noticeDTO, setNoticeDTO] = useState({
     empId: "",
     title: "",
     content: "",
+    image: "",
     hyperlink: "",
+    weeklyImage: "",
   });
 
   const handleChange = (e) => {
@@ -18,17 +22,24 @@ const Admin2 = () => {
     });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNoticeDTO({
+        ...noticeDTO,
+        image: reader.result,
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 이벤트 방지
     try {
       await createNotice(noticeDTO);
       console.log("비정기알람 등록 성공");
       alert("비정기알람 등록 성공");
-      // dto 리셋
-      setNoticeDTO({
-        title: "",
-        content: "",
-      });
     } catch (error) {
       console.error("비정기알람 등록에 문제가 있습니다.", error);
     }
@@ -56,6 +67,7 @@ const Admin2 = () => {
         placeholder="비정기알람 제목"
         name="title"
       />
+
       <textarea
         className="border-2 border-black w-10/12"
         value={noticeDTO.content}
@@ -72,8 +84,31 @@ const Admin2 = () => {
         name="hyperlink"
       />
 
-      <button className="bg-blue-400 rounded-xl w-10/12" onClick={handleSubmit}>
-        등록
+      <span className="w-10/12 flex justify-first font-semibold">
+        weeklyImage
+      </span>
+      <input
+        className="border-2 border-black w-10/12"
+        value={noticeDTO.weeklyImage}
+        onChange={handleChange}
+        type="text"
+        placeholder="A1,A2,...,A8,B1,B2,...,D8"
+        name="weeklyImage"
+      />
+
+      <span className="w-10/12 flex justify-first font-semibold">썸네일</span>
+      <input
+        ref={fileInputRef}
+        onChange={handleImageChange}
+        type="file"
+        name="image"
+      />
+
+      <button
+        className="bg-blue-400 rounded-xl w-10/12 h-20 mt-10"
+        onClick={handleSubmit}
+      >
+        비정기메시지 보내기
       </button>
     </div>
   );

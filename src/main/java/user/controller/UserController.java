@@ -33,7 +33,7 @@ public class UserController {
             if (user.getPassword().equals(loginDTO.getPassword())) {  // 비밀번호 검증
                 String accessToken = jwtUtil.generateAccessToken(user);
                 String refreshToken = jwtUtil.generateRefreshToken(user);
-                return ResponseEntity.ok(new TokenDTO(accessToken, refreshToken)); //검증에 성공하면 accessToken과 refreshToken 발급
+                return ResponseEntity.ok(new TokenDTO(accessToken, refreshToken)); // 검증에 성공하면 accessToken과 refreshToken 발급
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenDTO("비밀번호가 유효하지 않습니다."));
             }
@@ -59,7 +59,6 @@ public class UserController {
         }
     }
 
-
     @GetMapping("/check-session")
     public ResponseEntity<?> checkSession(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
@@ -72,15 +71,10 @@ public class UserController {
         return ResponseEntity.status(401).build();
     }
 
-    //로그인 user 정보 조회
-
     @GetMapping("/users/me")
-    public UserInfoDTO getUserInfo(){
+    public UserInfoDTO getUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         String empId = authentication.getName();
         return userService.getUserInfo(empId);
     }
-
-
 }

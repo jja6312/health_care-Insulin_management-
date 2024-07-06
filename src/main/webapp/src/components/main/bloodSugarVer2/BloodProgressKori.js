@@ -30,12 +30,12 @@ const BloodProgressKori = () => {
 
   return (
     <div className="w-10/12 border-2 border-gray-100 dark:border-[#202A33] h-40 my-4 flex flex-col mb-20">
-      <div className="w-full flex justify-end">
+      {/* <div className="w-full flex justify-end">
         <span className="text-gray-500 text-sm mr-1 mt-2">
           *주간 사용자 평균 :{" "}
-          {bloodCountAvgInPeriod === "" ? "0" : bloodCountAvgInPeriod}회
+          {bloodCountAvgInPeriod === "" ? "0" : bloodCountAvgInPeriod}일
         </span>
-      </div>
+      </div> */}
       <div className="flex justify-center items-end pb-12 w-full h-full">
         <div className="relative w-10/12 h-[6px] bg-[#1DAA53]">
           {/* 0 */}
@@ -89,7 +89,7 @@ const BloodProgressKori = () => {
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
             text-gray-400 gap-[1px] font-semibold"
             >
-              <span className="">최소 3회</span>
+              <span className="">권장 3일</span>
             </div>
           </div>
           {bloodSugarVer2InPeriod.length === 3 && (
@@ -123,7 +123,7 @@ const BloodProgressKori = () => {
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
             text-gray-500 dark:text-gray-300 gap-[1px] font-semibold"
             >
-              <span className="">권장 5회</span>
+              <span className="">우수 5일</span>
             </div>
           </div>
           {bloodSugarVer2InPeriod.length === 5 && (
@@ -157,7 +157,7 @@ const BloodProgressKori = () => {
               className="absolute flex items-center justify-center top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/3 whitespace-nowrap
             text-black dark:text-white gap-[1px] font-semibold"
             >
-              <span className="mr-1">우수 7회</span>
+              <span className="mr-1">최고 7일</span>
             </div>
           </div>
           {bloodSugarVer2InPeriod.length === 7 && (

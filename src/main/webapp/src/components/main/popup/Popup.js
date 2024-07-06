@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import popup1 from "../../../assets/popup/popup1.jpg";
-import popup2 from "../../../assets/popup/popup2.jpg";
+
+import popup7 from "../../../assets/popup/popup7.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup1, popup2];
+const images = [popup7];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -55,13 +55,13 @@ const Popup = () => {
         {images.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === activeIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute flex justify-center items-center inset-0 transition-opacity duration-1000 
+              bg-[#F6A8C0]
+              ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
           >
             <img
               src={img}
-              className="block w-full h-full object-cover"
+              className="block w-full object-fit"
               alt={`popup${index + 1}`}
             />
           </div>

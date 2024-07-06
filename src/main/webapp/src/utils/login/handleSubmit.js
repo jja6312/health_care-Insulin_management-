@@ -1,6 +1,13 @@
 import { loginApi } from "../../api/authApi";
 
-const handleSubmit = async (e, navigate, setLoading, setError, loginDTO) => {
+const handleSubmit = async (
+  e,
+  navigate,
+  setLoading,
+  setError,
+  loginDTO,
+  rememberMe
+) => {
   e.preventDefault();
   setLoading(true);
   setError(null);
@@ -9,7 +16,11 @@ const handleSubmit = async (e, navigate, setLoading, setError, loginDTO) => {
 
     if (accessToken && refreshToken) {
       sessionStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("refreshToken", refreshToken);
+      if (rememberMe) {
+        localStorage.setItem("refreshToken", refreshToken);
+      } else {
+        sessionStorage.setItem("refreshToken", refreshToken);
+      }
       console.log("로그인 성공");
       setLoading(false);
       navigate("/");

@@ -54,7 +54,7 @@ const BloodSurgarVer2 = () => {
         // selectedPeriod.start <= today &&
         // selectedPeriod.end >= today &&
         dayOfWeek >= 0 &&
-        //혈당 데이터가 3회 미만인경우
+        //혈당 데이터가 3일 미만인경우
         bloodSugarVer2InPeriod.length < 3
       ) {
         const weekKey = `hideWarning_week_${selectedPeriod.week}`;
@@ -66,7 +66,7 @@ const BloodSurgarVer2 = () => {
           setShowWarning(false); //끄기
         }
       } else {
-        //3회이상측정했으면
+        //3일이상측정했으면
         setShowWarning(false); //끄기
       }
     }
@@ -117,7 +117,7 @@ const BloodSurgarVer2 = () => {
               {/* {averageBloodSugar !== null
                 ? Math.round(averageBloodSugar)
                 : "N/A"} */}
-              {bloodSugarVer2InPeriod.length}회 측정
+              {bloodSugarVer2InPeriod.length}일 측정
             </span>
             <span className="dark:text-white">했어요</span>
           </div>
@@ -143,15 +143,15 @@ const BloodSurgarVer2 = () => {
           `}
           >
             {bloodSugarVer2InPeriod.length >= 7
-              ? "우수 7회 혈당체크를 달성했어요"
+              ? "우수 7일 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length >= 5
-              ? "권장 5회 혈당체크를 달성했어요"
+              ? "권장 5일 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length >= 3
-              ? "최소 3회 혈당체크를 달성했어요"
+              ? "최소 3일 혈당체크를 달성했어요"
               : bloodSugarVer2InPeriod.length === 2
-              ? "혈당을 2회 측정했어요"
+              ? "혈당을 2일 측정했어요"
               : bloodSugarVer2InPeriod.length === 1
-              ? "혈당을 1회 측정했어요"
+              ? "혈당을 1일 측정했어요"
               : "혈당을 아직 측정하지 않았어요"}
           </span>
           {/* <span

@@ -48,7 +48,7 @@ const Period = () => {
       const today = stripTime(new Date());
       console.log("today", today);
 
-      const isThursdayOrLater = today.getDay() >= 4; // 4는 목요일
+      const isFridayOrLater = today.getDay() >= 5; // 4는 목요일
 
       const currentPeriod = calculatedPeriods.find((period) => {
         const periodStart = stripTime(period.start);
@@ -62,7 +62,7 @@ const Period = () => {
       console.log("currentPeriod", currentPeriod);
       console.log("previousPeriod", previousPeriod);
 
-      if (isThursdayOrLater) {
+      if (isFridayOrLater) {
         setSelectedPeriod(currentPeriod);
       } else if (currentPeriod.week === 1) {
         // 첫번째 주차라면 현재주차를선택
