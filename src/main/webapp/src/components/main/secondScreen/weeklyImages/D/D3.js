@@ -9,7 +9,7 @@ import image6 from "../../../../../assets/eventImages/D/3회차/6.jpg";
 import image7 from "../../../../../assets/eventImages/D/3회차/7.jpg";
 import image8 from "../../../../../assets/eventImages/D/3회차/8.jpg";
 import image9 from "../../../../../assets/eventImages/D/3회차/9.jpg";
-import image10 from "../../../../../assets/eventImages/D/3회차/10.jpg";
+// import image10 from "../../../../../assets/eventImages/D/3회차/10.jpg";
 
 const images = [
   image0,
@@ -22,7 +22,7 @@ const images = [
   image7,
   image8,
   image9,
-  image10,
+  // image10,
 ];
 
 const D3 = () => {
