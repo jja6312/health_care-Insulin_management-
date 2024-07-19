@@ -85,14 +85,21 @@ const EventModal = () => {
           ) : selectedEvent.weeklyImage === "1회차" ? (
             <WeeklyImage />
           ) : (
-            <a
-              href={selectedEvent.hyperlink}
-              className="text-blue-500 underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {selectedEvent.hyperlink}
-            </a>
+            <>
+              <img
+                className="w-full mb-2 border-gray-300 border-4"
+                src={`${selectedEvent.image}`}
+                alt="event"
+              />
+              <a
+                href={selectedEvent.hyperlink}
+                className="text-blue-500 text-sm underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {selectedEvent.hyperlink}
+              </a>
+            </>
           )}
 
           {/* NOTICE, 이미지가 없을때만 내용을 띄운다. */}
