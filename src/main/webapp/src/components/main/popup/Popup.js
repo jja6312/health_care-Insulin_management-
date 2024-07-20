@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup11 from "../../../assets/popup/popup11.jpg";
+import popup12 from "../../../assets/popup/popup12.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup11];
+const images = [popup12];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -90,6 +90,14 @@ const Popup = () => {
               onClick={() => setActiveIndex(index)}
             />
           ))}
+        </div>
+        <div className="flex">
+          <a
+            href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
+            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
+          >
+            리브레 링크 사용법 바로가기
+          </a>
         </div>
       </div>
       <div className="flex justify-end w-11/12 ">
