@@ -91,6 +91,14 @@ const Popup = () => {
             />
           ))}
         </div>
+        <div className="flex">
+          <a
+            href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
+            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
+          >
+            리브레 링크 사용법 바로가기
+          </a>
+        </div>
       </div>
       <div className="flex justify-end w-11/12 ">
         <div className="cursor-pointer mr-2" onClick={handleDoNotShowToday}>
