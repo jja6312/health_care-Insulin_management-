@@ -91,7 +91,6 @@ const Popup = () => {
             />
           ))}
         </div>
-        {/* 추후 삭제 필요 */}
         <div className="flex">
           <a
             href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
