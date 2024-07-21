@@ -91,6 +91,7 @@ const Popup = () => {
             />
           ))}
         </div>
+        {/* 삭제해야할 앵커 */}
         <div className="flex">
           <a
             href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
