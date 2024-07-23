@@ -94,10 +94,10 @@ const Popup = () => {
         {/* 삭제해야할 앵커 */}
         <div className="flex">
           <a
-            href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
+            href="https://youtube.com/shorts/OObNlfaepGg?feature=shared"
             className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            리브레 링크 사용법 바로가기
+            혈당과 유산소운동
           </a>
         </div>
       </div>
