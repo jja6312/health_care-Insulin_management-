@@ -84,13 +84,22 @@ const EventModal = () => {
             />
           ) : selectedEvent.weeklyImage === "1회차" ? (
             <WeeklyImage />
+          ) : selectedEvent.weeklyImage &&
+            selectedEvent.weeklyImage.length > 0 &&
+            (selectedEvent.weeklyImage[0] === "A" ||
+              selectedEvent.weeklyImage[0] === "B" ||
+              selectedEvent.weeklyImage[0] === "C" ||
+              selectedEvent.weeklyImage[0] === "D") ? (
+            <></>
           ) : (
             <>
-              <img
-                className="w-full mb-2 border-gray-300 border-4"
-                src={`${selectedEvent.image}`}
-                alt="event"
-              />
+              {selectedEvent.image && (
+                <img
+                  className="w-full mb-2 border-gray-300 border-4"
+                  src={`${selectedEvent.image}`}
+                  alt="event"
+                />
+              )}
               <a
                 href={selectedEvent.hyperlink}
                 className="text-blue-500 text-sm underline"
