@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup12 from "../../../assets/popup/popup12.jpg";
+import popup14 from "../../../assets/popup/popup14.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup12];
+const images = [popup14];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -91,12 +91,19 @@ const Popup = () => {
             />
           ))}
         </div>
-        <div className="flex">
+        {/* 삭제해야할 앵커  */}
+        <div className="flex flex-col justify-center items-center">
           <a
-            href="https://youtube.com/shorts/n7iYslLYuqY?feature=shared"
+            href="https://youtube.com/shorts/174hTthsr4c?feature=shared"
             className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            리브레 링크 사용법 바로가기
+            공복 혈당의 변화
+          </a>
+          <a
+            href="https://youtube.com/shorts/kPhaldyPohI?feature=shared"
+            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
+          >
+            식후 혈당의 목표
           </a>
         </div>
       </div>
