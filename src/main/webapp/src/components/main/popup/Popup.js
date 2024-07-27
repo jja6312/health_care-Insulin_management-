@@ -92,12 +92,18 @@ const Popup = () => {
           ))}
         </div>
         {/* 삭제해야할 앵커  */}
-        <div className="flex">
+        <div className="flex flex-col justify-center items-center">
           <a
-            href="https://youtube.com/shorts/OObNlfaepGg?feature=shared"
+            href="https://youtube.com/shorts/174hTthsr4c?feature=shared"
             className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            혈당과 유산소운동
+            공복 혈당의 변화
+          </a>
+          <a
+            href="https://youtube.com/shorts/kPhaldyPohI?feature=shared"
+            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
+          >
+            식후 혈당의 목표
           </a>
         </div>
       </div>
