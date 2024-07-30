@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup14 from "../../../assets/popup/popup14.jpg";
+import popup15 from "../../../assets/popup/popup15.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup14];
+const images = [popup15];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -94,16 +94,10 @@ const Popup = () => {
         {/* 삭제해야할 앵커  */}
         <div className="flex justify-end items-center z-50">
           <a
-            href="https://youtube.com/shorts/174hTthsr4c?feature=shared"
+            href="https://youtube.com/shorts/7y0-rxLCI0A?feature=shared"
             className="absolute bottom-12 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            공복 혈당의 변화
-          </a>
-          <a
-            href="https://youtube.com/shorts/kPhaldyPohI?feature=shared"
-            className="absolute bottom-2 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
-          >
-            식후 혈당의 목표
+            혈당과 스트레스
           </a>
         </div>
       </div>
