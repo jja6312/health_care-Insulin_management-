@@ -92,14 +92,15 @@ const Popup = () => {
           ))}
         </div>
         {/* 삭제해야할 앵커  */}
-        {/* <div className="flex justify-end items-center z-50">
-          <a
+        <div className="flex justify-end items-center z-50">
+          {/* <a
             href="https://youtube.com/shorts/7y0-rxLCI0A?feature=shared"
             className="absolute bottom-12 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
             음주와  저혈당
-          </a>
-        </div> */}
+          </a> */}
+          <span>음주와 저혈당</span>
+        </div>
       </div>
       <div className="flex justify-end w-11/12 ">
         <div className="cursor-pointer mr-2" onClick={handleDoNotShowToday}>
