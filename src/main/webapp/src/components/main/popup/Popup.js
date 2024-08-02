@@ -97,7 +97,7 @@ const Popup = () => {
             href="https://youtube.com/shorts/7y0-rxLCI0A?feature=shared"
             className="absolute bottom-12 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            음주와 저혈당
+            음주와  저혈당
           </a>
         </div> */}
       </div>
