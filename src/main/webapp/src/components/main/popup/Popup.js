@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup15 from "../../../assets/popup/popup15.jpg";
+import popup16 from "../../../assets/popup/popup16.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup15];
+const images = [popup16];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -92,14 +92,14 @@ const Popup = () => {
           ))}
         </div>
         {/* 삭제해야할 앵커  */}
-        <div className="flex justify-end items-center z-50">
+        {/* <div className="flex justify-end items-center z-50">
           <a
             href="https://youtube.com/shorts/7y0-rxLCI0A?feature=shared"
             className="absolute bottom-12 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            혈당과 스트레스
+            음주와 저혈당
           </a>
-        </div>
+        </div> */}
       </div>
       <div className="flex justify-end w-11/12 ">
         <div className="cursor-pointer mr-2" onClick={handleDoNotShowToday}>
