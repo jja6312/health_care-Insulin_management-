@@ -51,7 +51,7 @@ const Popup = () => {
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-80"
       onClick={handleOutsideClick}
     >
-      <div className="relative w-11/12 max-w-4xl h-[440px] overflow-hidden rounded-lg">
+      <div className="relative w-11/12 max-w-4xl h-[340px] overflow-hidden rounded-lg">
         {images.map((img, index) => (
           <div
             key={index}
