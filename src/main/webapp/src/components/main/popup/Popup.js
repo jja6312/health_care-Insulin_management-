@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup16 from "../../../assets/popup/popup16.jpg";
+import popup17 from "../../../assets/popup/popup17.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup16];
+const images = [popup17];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
