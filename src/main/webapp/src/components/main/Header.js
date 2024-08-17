@@ -22,7 +22,7 @@ const Header = ({ handleIconClick, showSecondScreen }) => {
   return (
     <div className="relative w-full flex justify-end items-center my-2 text-[12px]">
       {noticeList
-        ?.filter((e) => e.title.includes("주차")) // includes 메소드로 변경
+        ?.filter((e) => e.title.includes("리브레")) // includes 메소드로 변경
         .filter((e) => !e.readByUsers.includes(userInfoDTO.empId)).length > // some 메소드로 변경
         0 && (
         <span
