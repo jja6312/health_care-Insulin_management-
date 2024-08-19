@@ -17,13 +17,14 @@ import SecondScreen from "../components/main/secondScreen/SecondScreen";
 import { useEventStore } from "../store/useEventStore";
 import EventModal from "../components/main/secondScreen/modal/EventModal";
 import checkSession from "../api/checkSession"; // checkSession import
+import { useSecondScreenStore } from "../store/useSecondScreenStore";
 
 Modal.setAppElement("#root");
 
 const Main = () => {
   const { setTexts } = usePointStore();
   const { openPopup } = usePopupStore();
-  const [showSecondScreen, setShowSecondScreen] = useState(false);
+  const { showSecondScreen, setShowSecondScreen } = useSecondScreenStore();
   const { isEventModalOpen } = useEventStore();
   const mainRef = useRef(null);
   const secondScreenRef = useRef(null);

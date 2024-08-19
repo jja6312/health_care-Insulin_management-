@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import popup14 from "../../../assets/popup/popup14.jpg";
+import popup18 from "../../../assets/popup/popup18.jpg";
 import { usePopupStore } from "../../../store/usePopupStore";
 
-const images = [popup14];
+const images = [popup18];
 
 const Popup = () => {
   const { setOpenPopup } = usePopupStore();
@@ -51,11 +51,11 @@ const Popup = () => {
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-80"
       onClick={handleOutsideClick}
     >
-      <div className="relative w-11/12 max-w-4xl h-96 overflow-hidden rounded-lg">
+      <div className="relative w-11/12 max-w-4xl h-[340px] overflow-hidden rounded-lg">
         {images.map((img, index) => (
           <div
             key={index}
-            className={`absolute flex justify-center items-center inset-0 transition-opacity duration-1000 
+            className={`absolute flex justify-center items-start inset-0 transition-opacity duration-1000 
               bg-white
               ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
           >
@@ -92,19 +92,14 @@ const Popup = () => {
           ))}
         </div>
         {/* 삭제해야할 앵커  */}
-        <div className="flex flex-col justify-center items-center">
-          <a
-            href="https://youtube.com/shorts/174hTthsr4c?feature=shared"
-            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
+        <div className="flex justify-end items-center z-50">
+          {/* <a
+            href="https://youtube.com/shorts/7y0-rxLCI0A?feature=shared"
+            className="absolute bottom-12 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
           >
-            공복 혈당의 변화
-          </a>
-          <a
-            href="https://youtube.com/shorts/kPhaldyPohI?feature=shared"
-            className="absolute bottom-0 right-0 h-12 text-lg text-blue-500 underline bg-white w-full flex justify-center items-center"
-          >
-            식후 혈당의 목표
-          </a>
+            음주와  저혈당
+          </a> */}
+          <span>음주와 저혈당</span>
         </div>
       </div>
       <div className="flex justify-end w-11/12 ">
