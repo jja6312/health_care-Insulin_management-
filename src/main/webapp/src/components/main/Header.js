@@ -9,14 +9,31 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEventStore } from "../../store/useEventStore";
+import { usePopupStore } from "../../store/usePopupStore";
+import { useSecondScreenStore } from "../../store/useSecondScreenStore";
 
 const Header = ({ handleIconClick, showSecondScreen }) => {
   const { userInfoDTO } = useUserInfoStore();
+  const { setShowSecondScreen } = useSecondScreenStore();
+
   const { readList, eventList, noticeList } = useEventStore();
   const navigate = useNavigate();
 
   return (
     <div className="relative w-full flex justify-end items-center my-2 text-[12px]">
+      {noticeList
+        ?.filter((e) => e.title.includes("리브레")) // includes 메소드로 변경
+        .filter((e) => !e.readByUsers.includes(userInfoDTO.empId)).length > // some 메소드로 변경
+        0 && (
+        <span
+          className="bg-yellow-400 text-black py-1 px-2 mr-4"
+          onClick={() => {
+            setShowSecondScreen(true);
+          }}
+        >
+          리브레 메시지 확인
+        </span>
+      )}
       {showSecondScreen && (
         <FontAwesomeIcon
           className="text-xl absolute left-6 top-1 text-gray-500"
