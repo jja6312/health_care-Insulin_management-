@@ -13,11 +13,11 @@
 > 유지보수: 3주 (2024.06.24 ~ 09.15)
 
 ---
+### 배포주소  
+http://nonghyuphealthcare-react.s3-website.ap-northeast-2.amazonaws.com/login  
+테스트 아이디: test  
+테스트 비밀번호: 123
 
-## 배포주소  
-(STOP)http://nonghyuphealthcare-react.s3-website.ap-northeast-2.amazonaws.com/login
-테스트 아이디 : test  
-테스트 비밀번호 : 123
 ---
 
 ## 프로젝트 소개
