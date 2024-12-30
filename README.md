@@ -29,9 +29,23 @@
 
 # 주요 화면
 
-| 메인 페이지                         | 관리자 페이지                    | 알림 페이지                           |
-|-----------------------------------|-------------------------------|------------------------------------|
-| ![메인페이지](https://github.com/user-attachments/assets/abc123.png) | ![관리자페이지](https://github.com/user-attachments/assets/def456.png) | ![알림페이지](https://github.com/user-attachments/assets/ghi789.png) |
+| 번호                                 | 설명                          | 번호                                | 설명                          |
+|-------------------------------------|-------------------------------|------------------------------------|-------------------------------|
+| 1. 메인페이지(다크모드)             |        ![1_main(black)](https://github.com/user-attachments/assets/cf987972-2e34-4b8c-a6da-d09d89c79613)
+                       | 2. 메인페이지(라이트모드)          |         ![1_main(white)](https://github.com/user-attachments/assets/958faa96-3197-47b3-83bf-85bfd496b0cd)
+                      |
+| 3. 알림 및 공지사항                 |           ![2_알림및공지사항](https://github.com/user-attachments/assets/8ec615dc-42aa-416d-b5e4-c1638b6e82cb)
+                    | 4. 세부 알림 확인(단일 이미지)     |          ![3_세부이미지확인](https://github.com/user-attachments/assets/c8b75a9c-fa5b-4517-861b-8eff765fef48)
+                     |
+| 5. 세부 알림 확인(복수 이미지)      |                ![3_이미지가여러장일경우캐러셀사용](https://github.com/user-attachments/assets/c0321afb-6fe6-47e0-b7fd-126c502adea1)
+               | 6. 포인트 적립 내역 확인           |          ![4_포인트적립내역확인](https://github.com/user-attachments/assets/5809b0a2-3593-4a60-b16a-5e8224d4e509)
+                     |
+| 7. 클릭시 코끼리점프                 |         ![5점프하는코끼리](https://github.com/user-attachments/assets/5c8e52c0-526e-4755-9062-971eda6aba26)
+                      | 8. 관리자페이지(공지사항 등록)      |           ![9-1_관리자페이지(정기메시지전송)](https://github.com/user-attachments/assets/3e0e053d-2793-4249-bb2a-53dbccaa3d37)
+                    |
+| 9. 관리자페이지(알림 등록)          |               ![9-2_관리자페이지(비정기메시지전송)](https://github.com/user-attachments/assets/25cb1c16-bbbc-4124-807d-89d7c098471a)
+                | 10. 로그인                         |           ![0_login](https://github.com/user-attachments/assets/04e747d0-6c06-492c-b16a-2fa2c67b3b24)
+                    |
 
 ---
 
