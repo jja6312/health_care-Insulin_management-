@@ -66,22 +66,52 @@
 # 디렉토리 구조
 
 ```bash
-HealthCareProject/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── io/nhlife/healthcare/
-│   │   │       ├── domain/
-│   │   │       │   └── InsulinManagementEntity.java
-│   │   │       ├── service/
-│   │   │       │   └── HealthService.java
-│   │   │       ├── repository/
-│   │   │       │   └── InsulinManagementRepository.java
-│   │   │       └── controller/
-│   │   │           └── HealthCareController.java
-│   └── resources/
-│       ├── application.yml
-│       └── static/
-├── Dockerfile
-├── README.md
-└── pom.xml
+src
+├── main
+│   ├── java                    # Java 백엔드 코드
+│   │   ├── bloodSugar          # 혈당 관련 비즈니스 로직
+│   │   │   ├── controller      # 혈당 컨트롤러
+│   │   │   ├── repository      # 혈당 데이터 접근 계층
+│   │   │   └── service         # 혈당 서비스 계층
+│   │   ├── event
+│   │   │   ├── controller      # 이벤트 컨트롤러
+│   │   │   ├── dto             # 이벤트 DTO (Data Transfer Objects)
+│   │   │   ├── entity          # 이벤트 엔티티 클래스
+│   │   │   ├── repository      # 이벤트 저장소
+│   │   │   └── service         # 이벤트 서비스 계층
+│   │   ├── security
+│   │   │   ├── JwtRequestFilter.java # JWT 필터
+│   │   │   ├── JwtUtil.java         # JWT 유틸리티 클래스
+│   │   │   └── WebSecurityConfig.java # Spring Security 설정
+│   │   └── user
+│   │       ├── controller      # 사용자 관련 컨트롤러
+│   │       ├── dto             # 사용자 DTO
+│   │       ├── entity          # 사용자 엔티티 클래스
+│   │       ├── repository      # 사용자 데이터 저장소
+│   │       └── service         # 사용자 서비스 계층
+│   ├── resources
+│   │   ├── static              # 정적 리소스 (CSS, JS, 이미지)
+│   │   └── templates           # HTML 템플릿 파일
+│   └── webapp                  # 프론트엔드 소스
+│       ├── public              # 공개용 파일
+│       └── src
+│           ├── api             # API 요청 핸들러
+│           │   └── authApi.js  # 인증 관련 API 함수
+│           ├── components      # React 컴포넌트
+│           │   ├── Header.js   # 헤더 컴포넌트
+│           │   ├── Footer.js   # 푸터 컴포넌트
+│           │   ├── Popup.js    # 팝업 UI 컴포넌트
+│           │   ├── BloodChart.js # 혈당 데이터 시각화 차트
+│           │   └── DarkModeBtnCircle.js # 다크모드 전환 버튼
+│           └── store           # React 상태 관리
+│               ├── useLoginStore.js  # 로그인 상태 관리
+│               ├── useEventStore.js  # 이벤트 상태 관리
+│               ├── useDarkModeStore.js # 다크 모드 상태 관리
+│               ├── useUserInfoStore.js # 사용자 정보 관리
+│               └── usePointStore.js  # 포인트 관련 상태 관리
+└── test
+    ├── java
+    │   └── store
+    │       └── NonghyuphealthcareApplicationTests.java # 테스트 클래스
+    └── resources      # 테스트 리소스
+```
