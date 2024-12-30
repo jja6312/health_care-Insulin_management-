@@ -14,7 +14,7 @@
 
 ---
 ### 배포주소  
-http://nonghyuphealthcare-react.s3-website.ap-northeast-2.amazonaws.com/login  
+(STOP)http://nonghyuphealthcare-react.s3-website.ap-northeast-2.amazonaws.com/login  
 테스트 아이디: test  
 테스트 비밀번호: 123
 
