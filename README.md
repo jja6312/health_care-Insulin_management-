@@ -28,7 +28,7 @@
 ---
 # 주요 화면
 
-| 번호 | 설명                          | 번호 | 설명                          |
+| 페이지 | 설명                          | 페이지 | 설명                          |
 |------|-------------------------------|------|-------------------------------|
 | 1. 메인페이지(다크모드)             | ![1_main(black)](https://github.com/user-attachments/assets/cf987972-2e34-4b8c-a6da-d09d89c79613) | 2. 메인페이지(라이트모드)       | ![1_main(white)](https://github.com/user-attachments/assets/958faa96-3197-47b3-83bf-85bfd496b0cd) |
 | 3. 알림 및 공지사항                 | ![2_알림및공지사항](https://github.com/user-attachments/assets/8ec615dc-42aa-416d-b5e4-c1638b6e82cb) | 4. 세부 알림 확인(단일 이미지)  | ![3_세부이미지확인](https://github.com/user-attachments/assets/c8b75a9c-fa5b-4517-861b-8eff765fef48) |
